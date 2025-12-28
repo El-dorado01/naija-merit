@@ -1,0 +1,109 @@
+# Tasks
+
+- [x] Explore existing codebase and setup
+- [x] Define backend architecture and database schema (Planning)
+- [x] Explore existing codebase and setup
+- [x] Define backend architecture and database schema (Planning)
+- [x] Explore existing codebase and setup
+- [x] Define backend architecture and database schema (Planning)
+- [x] Implement Core Student Module
+    - [x] Update Prisma Schema
+    - [x] Generate Migrations (Schema Push)
+    - [x] Create Student Service & Controller
+- [x] Implement Core Student Module
+    - [x] Update Prisma Schema
+    - [x] Generate Migrations (Schema Push)
+    - [x] Create Student Service & Controller
+- [x] Implement Academic Records Module
+    - [x] Create Academic Record Service & Controller
+    - [x] Create Institution Service & Controller
+- [x] Implement Academic Records Module
+    - [x] Create Academic Record Service & Controller
+    - [x] Create Institution Service & Controller
+- [x] Implement Extracurriculars Module
+    - [x] Create Extracurricular Service & Controller
+- [x] Implement Ranking System
+    - [x] Create Ranking Service (Algorithm)
+    - [x] Create Ranking Controller
+- [/] Implement Auth & Roles (Admin, School, Student, Company)
+    - [x] Implement Auth Service & Controller (Basic Login)
+    - [x] Update Schema for Password & Auth Fields
+    - [x] Configure Global Prefix (api/v1)
+    - [x] Implement Main Auth Endpoints (Register, Login)
+    - [x] Install Auth Dependencies (pnpm)
+    - [x] Implement NIN Verification Endpoint
+    - [x] Implement Password Recovery (Forgot/Reset)
+    - [x] Implement JWT Strategy & Guards
+    - [x] Implement Token Blacklisting (Logout)
+- [x] Implement Profile Module (Generic)
+    - [x] Create Profile Service & Controller
+    - [x] Move Avatar Upload to Profile Module
+- [x] Implement Profile Module (Generic)
+    - [x] Create Profile Service & Controller
+    - [x] Move Avatar Upload to Profile Module
+    - [x] Implement Generic Profile Update
+    - [x] Add 'Me' Endpoints (Get/Update/Avatar with JWT)
+- [x] Implement User Module (Public/Search)
+    - [x] Create User Controller (and Module)
+    - [x] Implement Search & Filter (Role, Verified status)
+- [x] Implement User Module (Public/Search)
+    - [x] Create User Controller (and Module)
+    - [x] Implement Search & Filter (Role, Verified status)
+    - [x] Implement Public Profile View
+- [x] Implement Access Control & Privacy
+    - [x] Update Schema for Access Requests
+    - [x] Implement Request Access Endpoint (Recruiter)
+    - [x] Implement Admin Approval Endpoint
+    - [x] Enforce Role-Based Visibility in User Controller
+- [x] Refine Academic Record Module
+    - [x] Add 'isVerified' to Schema
+    - [x] Rename Endpoint to '/academics' (Controller)
+    - [x] Implement 'My Academics' (GET /academics/my)
+    - [x] Implement Verification (POST /academics/verify/:id)
+    - [x] Enforce Role-Based Access for Updates
+- [x] Refine Extracurricular Module
+    - [x] Add 'isVerified' and 'proofUrl' to Schema
+    - [x] Rename Endpoint to '/extracurriculars'
+    - [x] Implement 'My Activities' (GET /my) (Student)
+    - [x] Implement Verification (POST /verify/:id) (Admin)
+    - [x] Implement File Upload for Proof (Handled generically in create loop for now)
+    - [x] Implement Event Module (Renamed from Competition)
+        - [x] Create Event Module
+        - [x] POST /events
+        - [x] POST /participants
+        - [x] GET /events/results
+- [x] Implement Schools Module (Institution)
+    - [x] Update Schema (Link Profile to Institution)
+    - [x] POST /institution (Register & Generate Credentials)
+    - [x] POST /institution/:id/students (Bulk Upload - Skeletal Profiles)
+    - [x] GET /institution/:id/analytics (Stats)
+    - [x] Implement Profile Claiming (verifyNin with Migration Logic)
+- [/] Implement Super Admin System
+    - [x] Update Schema (Admin Permissions)
+    - [x] Create Admin Auth Routes
+    - [x] Implement Admin Management Endpoints
+    - [x] Create Permission Guards
+    - [x] Implement RBAC Middleware
+- [x] Implement Admin Protected Routes
+    - [x] POST /admin/approve-role/:userId
+    - [x] GET /admin/users (User Management)
+    - [x] POST /admin/recognize-event/:eventId
+- [x] Implement Ranking & Scoring System
+    - [x] Implement Academic Score Calculation
+    - [x] Implement Extracurricular Score Calculation  
+    - [x] Implement Total Score Aggregation
+    - [x] GET /rankings/national
+    - [x] GET /rankings/my-position
+- [x] Implement Companies & Recruiters Module
+    - [x] Create Companies/Recruitment Module
+    - [x] POST /companies (Register Company)
+    - [x] GET /students/search (Advanced Search with Filters)
+    - [x] POST /recruitment/shortlist (Shortlist Students)
+    - [x] Verify Access Control (isOpenToRecruiters + AccessRequest)
+
+
+
+
+
+
+

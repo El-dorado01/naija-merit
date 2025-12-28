@@ -17,7 +17,7 @@ datasource db {
 // Your profile table (now includes auth user id as UUID primary key)
 model Profile {
   id                 String       @id @default(uuid()) @db.Uuid
-  role               String?      @default("student") // 'student', 'school_admin', 'company', 'recruiter', 'event-organizer'
+  role               String?      @default("student") // 'student', 'school_admin', 'company', 'recruiter', 'event-organizer', 'admin', 'super_admin'
   nin                String?      @unique
   fullName           String?
   dateOfBirth        DateTime?
@@ -32,6 +32,10 @@ model Profile {
   institutionId      String?
   institution        Institution? @relation(fields: [institutionId], references: [id])
 
+  // Admin-specific fields
+  permissions Json? // Array of permission strings for admin roles
+  createdBy   String? // ID of super admin who created this admin
+
   // Relations
   academicRecords     AcademicRecord[]
   extracurriculars    ExtracurricularActivity[]
@@ -40,6 +44,10 @@ model Profile {
   // Access Control
   sentRequests     AccessRequest[] @relation("SentRequests")
   receivedRequests AccessRequest[] @relation("ReceivedRequests")
+
+  // Recruitment
+  company       Company?
+  shortlistedBy Shortlist[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -85,11 +93,12 @@ model TokenBlacklist {
 }
 
 model Institution {
-  id      String  @id @default(uuid())
-  name    String
-  type    String // e.g., 'Primary', 'Secondary', 'University', 'Waec', 'Jamb'
-  address String?
-  state   String?
+  id        String  @id @default(uuid())
+  name      String
+  type      String // e.g., 'Primary', 'Secondary', 'University', 'Waec', 'Jamb'
+  address   String?
+  state     String?
+  cgpaScale Float?  @default(5.0) // Max CGPA scale for tertiary institutions
 
   academicRecords AcademicRecord[]
   members         Profile[]
@@ -112,6 +121,8 @@ model AcademicRecord {
   code       String? // e.g., "MTH101"
   grade      String? // e.g., "A", "B"
   score      Float? // e.g., 75.5
+  classRank  Int? // Student's rank in class (1 = top)
+  classSize  Int? // Total students in class
   isVerified Boolean @default(false)
   verifiedBy String? // e.g. Admin or Teacher ID
 
@@ -208,4 +219,39 @@ model Nin {
   profile Profile?
 
   @@index([nin])
+}
+
+model Company {
+  id          String  @id @default(uuid())
+  name        String
+  industry    String?
+  website     String?
+  description String?
+
+  profileId String  @unique @db.Uuid // Links to recruiter's profile
+  profile   Profile @relation(fields: [profileId], references: [id])
+
+  shortlists Shortlist[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("companies")
+}
+
+model Shortlist {
+  id        String  @id @default(uuid())
+  companyId String
+  studentId String  @db.Uuid
+  notes     String?
+  status    String  @default("shortlisted") // shortlisted, interviewed, offered, rejected
+
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  student Profile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([companyId, studentId])
+  @@map("shortlists")
 }

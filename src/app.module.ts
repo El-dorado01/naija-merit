@@ -14,6 +14,8 @@ import { ProfileModule } from './profile/profile.module';
 import { UserModule } from './user/user.module';
 import { AccessRequestModule } from './access-request/access-request.module';
 import { EventModule } from './event/event.module';
+import { AdminModule } from './admin/admin.module';
+import { RecruitmentModule } from './recruitment/recruitment.module';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { EventModule } from './event/event.module';
       rootPath: join(__dirname, '..', 'uploads'),
       serveRoot: '/uploads',
     }),
-    PrismaModule, StudentModule, InstitutionModule, AcademicRecordModule, ExtracurricularModule, RankingModule, AuthModule, ProfileModule, UserModule, AccessRequestModule, EventModule
+    PrismaModule, StudentModule, InstitutionModule, AcademicRecordModule, ExtracurricularModule, RankingModule, AuthModule, ProfileModule, UserModule, AccessRequestModule, EventModule, AdminModule, RecruitmentModule
   ],
   controllers: [AppController],
   providers: [AppService],

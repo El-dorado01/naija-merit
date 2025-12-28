@@ -1,0 +1,98 @@
+1. School Grades & Performance
+
+Schools upload term/semester results → App calculates student's class percentile (e.g., top 5% in class = high points).
+
+Top 5% in class = 5 points
+Top 10% in class = 4 points
+Top 25% in class = 3 points
+Top 50% in class = 2 points
+Bottom 50% in class = 1 point
+
+
+
+
+2. CGPA GRADING SYSTEM
+
+
+Base: (Student CGPA / Max possible CGPA) × 40 points.
+Percentile multiplier: Top 5% = ×1.5, Top 10% = ×1.3, top 25% = ×1.2, no multiplier for top 50% and bottom 50%.
+
+
+
+
+3. Exam Bodies Scoring (WAEC, NECO, JAMB, etc.) - best of all for each exam body
+
+* JAMB/UTME: Score / 400 × 40 points (e.g., 300+ = 30 points).
+
+* WAEC/NECO: Number of A1/Credits + distinctions (min: 7 subjects, max: 9 subjects) × 20 points
+
+A1 = 7 points, 
+B2 = 6 points, 
+B3 = 5 points, 
+C4 = 4 points, 
+C5 = 3 points, 
+C6 = 2 points, 
+D7 = 1 point, 
+E8 = 0 point.
+
+Score points: - (sum points of grades) / max points possible.
+Total Score points = Score points × 20 points
+
+max 63 points for 9 subjects, max 49 points for 7 subjects.
+
+e.g., 
+FOR 9 SUBJECTS
+sum points of grades A1s = 7 × 9 = 63 points
+max points possible = 63 points.
+
+Total Score points = (sum points of grades) / max points possible.
+Total Score points = (63) / 63 = 1 point.
+Total Score points = 1 point × 20 points = 20 points.
+
+
+FOR 7 SUBJECTS
+sum points of grades A1s = 7 × 7 = 49 points.
+max points possible = 49 points.
+
+Total Score points = (sum points of grades) / max points possible.
+Total Score points = (49) / 49 = 1 point.
+Total Score points = 1 point × 20 points = 20 points.
+
+
+
+
+
+4. Extracurricular Activities (uploaded by institution) = 1 - 3 points based on type of institution.
+
+1 point for primary school
+2 points for secondary school
+3 points for tertiary institution
+
+
+
+
+
+
+5. Competitions, Hackathons & Events (Tiered System)
+
+Tier 1 (Elite) - National/International top placement or rare distinction - 8-10 points
+
+Tier 2 (High) - State/Regional win or national participation with distinction - 5-7 points
+
+Tier 3 (Strong) - Participation in approved event with certificate - 2-4 points
+
+Tier 4 (Basic) - General involvement/Participation in approved event without certificate - 1 point
+
+
+Ranking Process:
+
+Sort applicants by total points.
+Break ties by CGPA.
+
+
+
+Rank Types:
+National Leaderboard (all students).
+Age/Level-specific (e.g., JS3, SS3, Undergraduate).
+Subject-specific (e.g., Math whizzes).
+Talent Spotlights (e.g., top underserved regions).

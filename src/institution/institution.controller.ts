@@ -1,12 +1,16 @@
 import { Controller, Get, Post, Body, Param, UseGuards, Request, ForbiddenException } from '@nestjs/common';
 import { InstitutionService } from './institution.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { PermissionGuard } from '../guards/permission.guard';
+import { RequirePermission } from '../decorators/permissions.decorator';
 
 @Controller('institution')
 export class InstitutionController {
   constructor(private readonly institutionService: InstitutionService) {}
 
   @Post()
+  @UseGuards(JwtAuthGuard, PermissionGuard)
+  @RequirePermission('manage_institutions')
   create(@Body() dto: { name: string; type: string; address?: string; state?: string }) {
     // Ideally protected by Admin Guard
     return this.institutionService.create(dto);

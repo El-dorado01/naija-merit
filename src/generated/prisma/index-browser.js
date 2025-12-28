@@ -135,6 +135,8 @@ exports.Prisma.ProfileScalarFieldEnum = {
   isVerified: 'isVerified',
   isOpenToRecruiters: 'isOpenToRecruiters',
   institutionId: 'institutionId',
+  permissions: 'permissions',
+  createdBy: 'createdBy',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -169,6 +171,7 @@ exports.Prisma.InstitutionScalarFieldEnum = {
   type: 'type',
   address: 'address',
   state: 'state',
+  cgpaScale: 'cgpaScale',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -184,6 +187,8 @@ exports.Prisma.AcademicRecordScalarFieldEnum = {
   code: 'code',
   grade: 'grade',
   score: 'score',
+  classRank: 'classRank',
+  classSize: 'classSize',
   isVerified: 'isVerified',
   verifiedBy: 'verifiedBy',
   createdAt: 'createdAt',
@@ -246,14 +251,46 @@ exports.Prisma.NinScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CompanyScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  industry: 'industry',
+  website: 'website',
+  description: 'description',
+  profileId: 'profileId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ShortlistScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  studentId: 'studentId',
+  notes: 'notes',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
 
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 
 exports.Prisma.NullsOrder = {
@@ -273,7 +310,9 @@ exports.Prisma.ModelName = {
   Organization: 'Organization',
   Event: 'Event',
   EventParticipation: 'EventParticipation',
-  Nin: 'Nin'
+  Nin: 'Nin',
+  Company: 'Company',
+  Shortlist: 'Shortlist'
 };
 
 /**

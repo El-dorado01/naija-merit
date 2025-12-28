@@ -68,6 +68,16 @@ export type EventParticipation = $Result.DefaultSelection<Prisma.$EventParticipa
  * 
  */
 export type Nin = $Result.DefaultSelection<Prisma.$NinPayload>
+/**
+ * Model Company
+ * 
+ */
+export type Company = $Result.DefaultSelection<Prisma.$CompanyPayload>
+/**
+ * Model Shortlist
+ * 
+ */
+export type Shortlist = $Result.DefaultSelection<Prisma.$ShortlistPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -295,6 +305,26 @@ export class PrismaClient<
     * ```
     */
   get nin(): Prisma.NinDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.company`: Exposes CRUD operations for the **Company** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Companies
+    * const companies = await prisma.company.findMany()
+    * ```
+    */
+  get company(): Prisma.CompanyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.shortlist`: Exposes CRUD operations for the **Shortlist** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Shortlists
+    * const shortlists = await prisma.shortlist.findMany()
+    * ```
+    */
+  get shortlist(): Prisma.ShortlistDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -739,7 +769,9 @@ export namespace Prisma {
     Organization: 'Organization',
     Event: 'Event',
     EventParticipation: 'EventParticipation',
-    Nin: 'Nin'
+    Nin: 'Nin',
+    Company: 'Company',
+    Shortlist: 'Shortlist'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -755,7 +787,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "profile" | "accessRequest" | "passwordResetToken" | "tokenBlacklist" | "institution" | "academicRecord" | "extracurricularActivity" | "organization" | "event" | "eventParticipation" | "nin"
+      modelProps: "profile" | "accessRequest" | "passwordResetToken" | "tokenBlacklist" | "institution" | "academicRecord" | "extracurricularActivity" | "organization" | "event" | "eventParticipation" | "nin" | "company" | "shortlist"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1573,6 +1605,154 @@ export namespace Prisma {
           }
         }
       }
+      Company: {
+        payload: Prisma.$CompanyPayload<ExtArgs>
+        fields: Prisma.CompanyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CompanyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CompanyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload>
+          }
+          findFirst: {
+            args: Prisma.CompanyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CompanyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload>
+          }
+          findMany: {
+            args: Prisma.CompanyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload>[]
+          }
+          create: {
+            args: Prisma.CompanyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload>
+          }
+          createMany: {
+            args: Prisma.CompanyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CompanyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload>[]
+          }
+          delete: {
+            args: Prisma.CompanyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload>
+          }
+          update: {
+            args: Prisma.CompanyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload>
+          }
+          deleteMany: {
+            args: Prisma.CompanyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CompanyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CompanyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload>[]
+          }
+          upsert: {
+            args: Prisma.CompanyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyPayload>
+          }
+          aggregate: {
+            args: Prisma.CompanyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCompany>
+          }
+          groupBy: {
+            args: Prisma.CompanyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CompanyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CompanyCountArgs<ExtArgs>
+            result: $Utils.Optional<CompanyCountAggregateOutputType> | number
+          }
+        }
+      }
+      Shortlist: {
+        payload: Prisma.$ShortlistPayload<ExtArgs>
+        fields: Prisma.ShortlistFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ShortlistFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ShortlistFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload>
+          }
+          findFirst: {
+            args: Prisma.ShortlistFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ShortlistFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload>
+          }
+          findMany: {
+            args: Prisma.ShortlistFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload>[]
+          }
+          create: {
+            args: Prisma.ShortlistCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload>
+          }
+          createMany: {
+            args: Prisma.ShortlistCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ShortlistCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload>[]
+          }
+          delete: {
+            args: Prisma.ShortlistDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload>
+          }
+          update: {
+            args: Prisma.ShortlistUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload>
+          }
+          deleteMany: {
+            args: Prisma.ShortlistDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ShortlistUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ShortlistUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload>[]
+          }
+          upsert: {
+            args: Prisma.ShortlistUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShortlistPayload>
+          }
+          aggregate: {
+            args: Prisma.ShortlistAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateShortlist>
+          }
+          groupBy: {
+            args: Prisma.ShortlistGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ShortlistGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ShortlistCountArgs<ExtArgs>
+            result: $Utils.Optional<ShortlistCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1692,6 +1872,8 @@ export namespace Prisma {
     event?: EventOmit
     eventParticipation?: EventParticipationOmit
     nin?: NinOmit
+    company?: CompanyOmit
+    shortlist?: ShortlistOmit
   }
 
   /* Types for Logging */
@@ -1777,6 +1959,7 @@ export namespace Prisma {
     eventParticipations: number
     sentRequests: number
     receivedRequests: number
+    shortlistedBy: number
   }
 
   export type ProfileCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1785,6 +1968,7 @@ export namespace Prisma {
     eventParticipations?: boolean | ProfileCountOutputTypeCountEventParticipationsArgs
     sentRequests?: boolean | ProfileCountOutputTypeCountSentRequestsArgs
     receivedRequests?: boolean | ProfileCountOutputTypeCountReceivedRequestsArgs
+    shortlistedBy?: boolean | ProfileCountOutputTypeCountShortlistedByArgs
   }
 
   // Custom InputTypes
@@ -1831,6 +2015,13 @@ export namespace Prisma {
    */
   export type ProfileCountOutputTypeCountReceivedRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AccessRequestWhereInput
+  }
+
+  /**
+   * ProfileCountOutputType without action
+   */
+  export type ProfileCountOutputTypeCountShortlistedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ShortlistWhereInput
   }
 
 
@@ -1937,6 +2128,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type CompanyCountOutputType
+   */
+
+  export type CompanyCountOutputType = {
+    shortlists: number
+  }
+
+  export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    shortlists?: boolean | CompanyCountOutputTypeCountShortlistsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyCountOutputType
+     */
+    select?: CompanyCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountShortlistsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ShortlistWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1965,6 +2187,7 @@ export namespace Prisma {
     isVerified: boolean | null
     isOpenToRecruiters: boolean | null
     institutionId: string | null
+    createdBy: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1984,6 +2207,7 @@ export namespace Prisma {
     isVerified: boolean | null
     isOpenToRecruiters: boolean | null
     institutionId: string | null
+    createdBy: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2003,6 +2227,8 @@ export namespace Prisma {
     isVerified: number
     isOpenToRecruiters: number
     institutionId: number
+    permissions: number
+    createdBy: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2024,6 +2250,7 @@ export namespace Prisma {
     isVerified?: true
     isOpenToRecruiters?: true
     institutionId?: true
+    createdBy?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2043,6 +2270,7 @@ export namespace Prisma {
     isVerified?: true
     isOpenToRecruiters?: true
     institutionId?: true
+    createdBy?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2062,6 +2290,8 @@ export namespace Prisma {
     isVerified?: true
     isOpenToRecruiters?: true
     institutionId?: true
+    permissions?: true
+    createdBy?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2154,6 +2384,8 @@ export namespace Prisma {
     isVerified: boolean
     isOpenToRecruiters: boolean
     institutionId: string | null
+    permissions: JsonValue | null
+    createdBy: string | null
     createdAt: Date
     updatedAt: Date
     _count: ProfileCountAggregateOutputType | null
@@ -2190,6 +2422,8 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: boolean
+    permissions?: boolean
+    createdBy?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     institution?: boolean | Profile$institutionArgs<ExtArgs>
@@ -2198,6 +2432,8 @@ export namespace Prisma {
     eventParticipations?: boolean | Profile$eventParticipationsArgs<ExtArgs>
     sentRequests?: boolean | Profile$sentRequestsArgs<ExtArgs>
     receivedRequests?: boolean | Profile$receivedRequestsArgs<ExtArgs>
+    company?: boolean | Profile$companyArgs<ExtArgs>
+    shortlistedBy?: boolean | Profile$shortlistedByArgs<ExtArgs>
     ninRef?: boolean | Profile$ninRefArgs<ExtArgs>
     _count?: boolean | ProfileCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
@@ -2217,6 +2453,8 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: boolean
+    permissions?: boolean
+    createdBy?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     institution?: boolean | Profile$institutionArgs<ExtArgs>
@@ -2238,6 +2476,8 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: boolean
+    permissions?: boolean
+    createdBy?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     institution?: boolean | Profile$institutionArgs<ExtArgs>
@@ -2259,11 +2499,13 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: boolean
+    permissions?: boolean
+    createdBy?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "role" | "nin" | "fullName" | "dateOfBirth" | "gender" | "stateOfOrigin" | "phoneNumber" | "email" | "password" | "avatar" | "isVerified" | "isOpenToRecruiters" | "institutionId" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
+  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "role" | "nin" | "fullName" | "dateOfBirth" | "gender" | "stateOfOrigin" | "phoneNumber" | "email" | "password" | "avatar" | "isVerified" | "isOpenToRecruiters" | "institutionId" | "permissions" | "createdBy" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
   export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     institution?: boolean | Profile$institutionArgs<ExtArgs>
     academicRecords?: boolean | Profile$academicRecordsArgs<ExtArgs>
@@ -2271,6 +2513,8 @@ export namespace Prisma {
     eventParticipations?: boolean | Profile$eventParticipationsArgs<ExtArgs>
     sentRequests?: boolean | Profile$sentRequestsArgs<ExtArgs>
     receivedRequests?: boolean | Profile$receivedRequestsArgs<ExtArgs>
+    company?: boolean | Profile$companyArgs<ExtArgs>
+    shortlistedBy?: boolean | Profile$shortlistedByArgs<ExtArgs>
     ninRef?: boolean | Profile$ninRefArgs<ExtArgs>
     _count?: boolean | ProfileCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -2292,6 +2536,8 @@ export namespace Prisma {
       eventParticipations: Prisma.$EventParticipationPayload<ExtArgs>[]
       sentRequests: Prisma.$AccessRequestPayload<ExtArgs>[]
       receivedRequests: Prisma.$AccessRequestPayload<ExtArgs>[]
+      company: Prisma.$CompanyPayload<ExtArgs> | null
+      shortlistedBy: Prisma.$ShortlistPayload<ExtArgs>[]
       ninRef: Prisma.$NinPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2309,6 +2555,8 @@ export namespace Prisma {
       isVerified: boolean
       isOpenToRecruiters: boolean
       institutionId: string | null
+      permissions: Prisma.JsonValue | null
+      createdBy: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["profile"]>
@@ -2711,6 +2959,8 @@ export namespace Prisma {
     eventParticipations<T extends Profile$eventParticipationsArgs<ExtArgs> = {}>(args?: Subset<T, Profile$eventParticipationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventParticipationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sentRequests<T extends Profile$sentRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Profile$sentRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     receivedRequests<T extends Profile$receivedRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Profile$receivedRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccessRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    company<T extends Profile$companyArgs<ExtArgs> = {}>(args?: Subset<T, Profile$companyArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    shortlistedBy<T extends Profile$shortlistedByArgs<ExtArgs> = {}>(args?: Subset<T, Profile$shortlistedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     ninRef<T extends Profile$ninRefArgs<ExtArgs> = {}>(args?: Subset<T, Profile$ninRefArgs<ExtArgs>>): Prisma__NinClient<$Result.GetResult<Prisma.$NinPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2755,6 +3005,8 @@ export namespace Prisma {
     readonly isVerified: FieldRef<"Profile", 'Boolean'>
     readonly isOpenToRecruiters: FieldRef<"Profile", 'Boolean'>
     readonly institutionId: FieldRef<"Profile", 'String'>
+    readonly permissions: FieldRef<"Profile", 'Json'>
+    readonly createdBy: FieldRef<"Profile", 'String'>
     readonly createdAt: FieldRef<"Profile", 'DateTime'>
     readonly updatedAt: FieldRef<"Profile", 'DateTime'>
   }
@@ -3289,6 +3541,49 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AccessRequestScalarFieldEnum | AccessRequestScalarFieldEnum[]
+  }
+
+  /**
+   * Profile.company
+   */
+  export type Profile$companyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    where?: CompanyWhereInput
+  }
+
+  /**
+   * Profile.shortlistedBy
+   */
+  export type Profile$shortlistedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    where?: ShortlistWhereInput
+    orderBy?: ShortlistOrderByWithRelationInput | ShortlistOrderByWithRelationInput[]
+    cursor?: ShortlistWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ShortlistScalarFieldEnum | ShortlistScalarFieldEnum[]
   }
 
   /**
@@ -6391,8 +6686,18 @@ export namespace Prisma {
 
   export type AggregateInstitution = {
     _count: InstitutionCountAggregateOutputType | null
+    _avg: InstitutionAvgAggregateOutputType | null
+    _sum: InstitutionSumAggregateOutputType | null
     _min: InstitutionMinAggregateOutputType | null
     _max: InstitutionMaxAggregateOutputType | null
+  }
+
+  export type InstitutionAvgAggregateOutputType = {
+    cgpaScale: number | null
+  }
+
+  export type InstitutionSumAggregateOutputType = {
+    cgpaScale: number | null
   }
 
   export type InstitutionMinAggregateOutputType = {
@@ -6401,6 +6706,7 @@ export namespace Prisma {
     type: string | null
     address: string | null
     state: string | null
+    cgpaScale: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6411,6 +6717,7 @@ export namespace Prisma {
     type: string | null
     address: string | null
     state: string | null
+    cgpaScale: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6421,11 +6728,20 @@ export namespace Prisma {
     type: number
     address: number
     state: number
+    cgpaScale: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type InstitutionAvgAggregateInputType = {
+    cgpaScale?: true
+  }
+
+  export type InstitutionSumAggregateInputType = {
+    cgpaScale?: true
+  }
 
   export type InstitutionMinAggregateInputType = {
     id?: true
@@ -6433,6 +6749,7 @@ export namespace Prisma {
     type?: true
     address?: true
     state?: true
+    cgpaScale?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6443,6 +6760,7 @@ export namespace Prisma {
     type?: true
     address?: true
     state?: true
+    cgpaScale?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6453,6 +6771,7 @@ export namespace Prisma {
     type?: true
     address?: true
     state?: true
+    cgpaScale?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -6496,6 +6815,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: InstitutionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InstitutionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: InstitutionMinAggregateInputType
@@ -6526,6 +6857,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: InstitutionCountAggregateInputType | true
+    _avg?: InstitutionAvgAggregateInputType
+    _sum?: InstitutionSumAggregateInputType
     _min?: InstitutionMinAggregateInputType
     _max?: InstitutionMaxAggregateInputType
   }
@@ -6536,9 +6869,12 @@ export namespace Prisma {
     type: string
     address: string | null
     state: string | null
+    cgpaScale: number | null
     createdAt: Date
     updatedAt: Date
     _count: InstitutionCountAggregateOutputType | null
+    _avg: InstitutionAvgAggregateOutputType | null
+    _sum: InstitutionSumAggregateOutputType | null
     _min: InstitutionMinAggregateOutputType | null
     _max: InstitutionMaxAggregateOutputType | null
   }
@@ -6563,6 +6899,7 @@ export namespace Prisma {
     type?: boolean
     address?: boolean
     state?: boolean
+    cgpaScale?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     academicRecords?: boolean | Institution$academicRecordsArgs<ExtArgs>
@@ -6576,6 +6913,7 @@ export namespace Prisma {
     type?: boolean
     address?: boolean
     state?: boolean
+    cgpaScale?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["institution"]>
@@ -6586,6 +6924,7 @@ export namespace Prisma {
     type?: boolean
     address?: boolean
     state?: boolean
+    cgpaScale?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["institution"]>
@@ -6596,11 +6935,12 @@ export namespace Prisma {
     type?: boolean
     address?: boolean
     state?: boolean
+    cgpaScale?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type InstitutionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "type" | "address" | "state" | "createdAt" | "updatedAt", ExtArgs["result"]["institution"]>
+  export type InstitutionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "type" | "address" | "state" | "cgpaScale" | "createdAt" | "updatedAt", ExtArgs["result"]["institution"]>
   export type InstitutionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     academicRecords?: boolean | Institution$academicRecordsArgs<ExtArgs>
     members?: boolean | Institution$membersArgs<ExtArgs>
@@ -6621,6 +6961,7 @@ export namespace Prisma {
       type: string
       address: string | null
       state: string | null
+      cgpaScale: number | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["institution"]>
@@ -7053,6 +7394,7 @@ export namespace Prisma {
     readonly type: FieldRef<"Institution", 'String'>
     readonly address: FieldRef<"Institution", 'String'>
     readonly state: FieldRef<"Institution", 'String'>
+    readonly cgpaScale: FieldRef<"Institution", 'Float'>
     readonly createdAt: FieldRef<"Institution", 'DateTime'>
     readonly updatedAt: FieldRef<"Institution", 'DateTime'>
   }
@@ -7523,10 +7865,14 @@ export namespace Prisma {
 
   export type AcademicRecordAvgAggregateOutputType = {
     score: number | null
+    classRank: number | null
+    classSize: number | null
   }
 
   export type AcademicRecordSumAggregateOutputType = {
     score: number | null
+    classRank: number | null
+    classSize: number | null
   }
 
   export type AcademicRecordMinAggregateOutputType = {
@@ -7540,6 +7886,8 @@ export namespace Prisma {
     code: string | null
     grade: string | null
     score: number | null
+    classRank: number | null
+    classSize: number | null
     isVerified: boolean | null
     verifiedBy: string | null
     createdAt: Date | null
@@ -7557,6 +7905,8 @@ export namespace Prisma {
     code: string | null
     grade: string | null
     score: number | null
+    classRank: number | null
+    classSize: number | null
     isVerified: boolean | null
     verifiedBy: string | null
     createdAt: Date | null
@@ -7574,6 +7924,8 @@ export namespace Prisma {
     code: number
     grade: number
     score: number
+    classRank: number
+    classSize: number
     isVerified: number
     verifiedBy: number
     createdAt: number
@@ -7584,10 +7936,14 @@ export namespace Prisma {
 
   export type AcademicRecordAvgAggregateInputType = {
     score?: true
+    classRank?: true
+    classSize?: true
   }
 
   export type AcademicRecordSumAggregateInputType = {
     score?: true
+    classRank?: true
+    classSize?: true
   }
 
   export type AcademicRecordMinAggregateInputType = {
@@ -7601,6 +7957,8 @@ export namespace Prisma {
     code?: true
     grade?: true
     score?: true
+    classRank?: true
+    classSize?: true
     isVerified?: true
     verifiedBy?: true
     createdAt?: true
@@ -7618,6 +7976,8 @@ export namespace Prisma {
     code?: true
     grade?: true
     score?: true
+    classRank?: true
+    classSize?: true
     isVerified?: true
     verifiedBy?: true
     createdAt?: true
@@ -7635,6 +7995,8 @@ export namespace Prisma {
     code?: true
     grade?: true
     score?: true
+    classRank?: true
+    classSize?: true
     isVerified?: true
     verifiedBy?: true
     createdAt?: true
@@ -7739,6 +8101,8 @@ export namespace Prisma {
     code: string | null
     grade: string | null
     score: number | null
+    classRank: number | null
+    classSize: number | null
     isVerified: boolean
     verifiedBy: string | null
     createdAt: Date
@@ -7775,6 +8139,8 @@ export namespace Prisma {
     code?: boolean
     grade?: boolean
     score?: boolean
+    classRank?: boolean
+    classSize?: boolean
     isVerified?: boolean
     verifiedBy?: boolean
     createdAt?: boolean
@@ -7794,6 +8160,8 @@ export namespace Prisma {
     code?: boolean
     grade?: boolean
     score?: boolean
+    classRank?: boolean
+    classSize?: boolean
     isVerified?: boolean
     verifiedBy?: boolean
     createdAt?: boolean
@@ -7813,6 +8181,8 @@ export namespace Prisma {
     code?: boolean
     grade?: boolean
     score?: boolean
+    classRank?: boolean
+    classSize?: boolean
     isVerified?: boolean
     verifiedBy?: boolean
     createdAt?: boolean
@@ -7832,13 +8202,15 @@ export namespace Prisma {
     code?: boolean
     grade?: boolean
     score?: boolean
+    classRank?: boolean
+    classSize?: boolean
     isVerified?: boolean
     verifiedBy?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type AcademicRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "profileId" | "institutionId" | "session" | "term" | "level" | "subject" | "code" | "grade" | "score" | "isVerified" | "verifiedBy" | "createdAt" | "updatedAt", ExtArgs["result"]["academicRecord"]>
+  export type AcademicRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "profileId" | "institutionId" | "session" | "term" | "level" | "subject" | "code" | "grade" | "score" | "classRank" | "classSize" | "isVerified" | "verifiedBy" | "createdAt" | "updatedAt", ExtArgs["result"]["academicRecord"]>
   export type AcademicRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     profile?: boolean | ProfileDefaultArgs<ExtArgs>
     institution?: boolean | InstitutionDefaultArgs<ExtArgs>
@@ -7869,6 +8241,8 @@ export namespace Prisma {
       code: string | null
       grade: string | null
       score: number | null
+      classRank: number | null
+      classSize: number | null
       isVerified: boolean
       verifiedBy: string | null
       createdAt: Date
@@ -8308,6 +8682,8 @@ export namespace Prisma {
     readonly code: FieldRef<"AcademicRecord", 'String'>
     readonly grade: FieldRef<"AcademicRecord", 'String'>
     readonly score: FieldRef<"AcademicRecord", 'Float'>
+    readonly classRank: FieldRef<"AcademicRecord", 'Int'>
+    readonly classSize: FieldRef<"AcademicRecord", 'Int'>
     readonly isVerified: FieldRef<"AcademicRecord", 'Boolean'>
     readonly verifiedBy: FieldRef<"AcademicRecord", 'String'>
     readonly createdAt: FieldRef<"AcademicRecord", 'DateTime'>
@@ -14314,6 +14690,2225 @@ export namespace Prisma {
 
 
   /**
+   * Model Company
+   */
+
+  export type AggregateCompany = {
+    _count: CompanyCountAggregateOutputType | null
+    _min: CompanyMinAggregateOutputType | null
+    _max: CompanyMaxAggregateOutputType | null
+  }
+
+  export type CompanyMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    industry: string | null
+    website: string | null
+    description: string | null
+    profileId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanyMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    industry: string | null
+    website: string | null
+    description: string | null
+    profileId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanyCountAggregateOutputType = {
+    id: number
+    name: number
+    industry: number
+    website: number
+    description: number
+    profileId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CompanyMinAggregateInputType = {
+    id?: true
+    name?: true
+    industry?: true
+    website?: true
+    description?: true
+    profileId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanyMaxAggregateInputType = {
+    id?: true
+    name?: true
+    industry?: true
+    website?: true
+    description?: true
+    profileId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanyCountAggregateInputType = {
+    id?: true
+    name?: true
+    industry?: true
+    website?: true
+    description?: true
+    profileId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CompanyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Company to aggregate.
+     */
+    where?: CompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Companies to fetch.
+     */
+    orderBy?: CompanyOrderByWithRelationInput | CompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Companies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Companies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Companies
+    **/
+    _count?: true | CompanyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CompanyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CompanyMaxAggregateInputType
+  }
+
+  export type GetCompanyAggregateType<T extends CompanyAggregateArgs> = {
+        [P in keyof T & keyof AggregateCompany]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCompany[P]>
+      : GetScalarType<T[P], AggregateCompany[P]>
+  }
+
+
+
+
+  export type CompanyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyWhereInput
+    orderBy?: CompanyOrderByWithAggregationInput | CompanyOrderByWithAggregationInput[]
+    by: CompanyScalarFieldEnum[] | CompanyScalarFieldEnum
+    having?: CompanyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CompanyCountAggregateInputType | true
+    _min?: CompanyMinAggregateInputType
+    _max?: CompanyMaxAggregateInputType
+  }
+
+  export type CompanyGroupByOutputType = {
+    id: string
+    name: string
+    industry: string | null
+    website: string | null
+    description: string | null
+    profileId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CompanyCountAggregateOutputType | null
+    _min: CompanyMinAggregateOutputType | null
+    _max: CompanyMaxAggregateOutputType | null
+  }
+
+  type GetCompanyGroupByPayload<T extends CompanyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CompanyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CompanyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CompanyGroupByOutputType[P]>
+            : GetScalarType<T[P], CompanyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CompanySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    industry?: boolean
+    website?: boolean
+    description?: boolean
+    profileId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    profile?: boolean | ProfileDefaultArgs<ExtArgs>
+    shortlists?: boolean | Company$shortlistsArgs<ExtArgs>
+    _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["company"]>
+
+  export type CompanySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    industry?: boolean
+    website?: boolean
+    description?: boolean
+    profileId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    profile?: boolean | ProfileDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["company"]>
+
+  export type CompanySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    industry?: boolean
+    website?: boolean
+    description?: boolean
+    profileId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    profile?: boolean | ProfileDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["company"]>
+
+  export type CompanySelectScalar = {
+    id?: boolean
+    name?: boolean
+    industry?: boolean
+    website?: boolean
+    description?: boolean
+    profileId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CompanyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "industry" | "website" | "description" | "profileId" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
+  export type CompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    profile?: boolean | ProfileDefaultArgs<ExtArgs>
+    shortlists?: boolean | Company$shortlistsArgs<ExtArgs>
+    _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CompanyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    profile?: boolean | ProfileDefaultArgs<ExtArgs>
+  }
+  export type CompanyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    profile?: boolean | ProfileDefaultArgs<ExtArgs>
+  }
+
+  export type $CompanyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Company"
+    objects: {
+      profile: Prisma.$ProfilePayload<ExtArgs>
+      shortlists: Prisma.$ShortlistPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      industry: string | null
+      website: string | null
+      description: string | null
+      profileId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["company"]>
+    composites: {}
+  }
+
+  type CompanyGetPayload<S extends boolean | null | undefined | CompanyDefaultArgs> = $Result.GetResult<Prisma.$CompanyPayload, S>
+
+  type CompanyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CompanyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CompanyCountAggregateInputType | true
+    }
+
+  export interface CompanyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Company'], meta: { name: 'Company' } }
+    /**
+     * Find zero or one Company that matches the filter.
+     * @param {CompanyFindUniqueArgs} args - Arguments to find a Company
+     * @example
+     * // Get one Company
+     * const company = await prisma.company.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CompanyFindUniqueArgs>(args: SelectSubset<T, CompanyFindUniqueArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Company that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CompanyFindUniqueOrThrowArgs} args - Arguments to find a Company
+     * @example
+     * // Get one Company
+     * const company = await prisma.company.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CompanyFindUniqueOrThrowArgs>(args: SelectSubset<T, CompanyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Company that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyFindFirstArgs} args - Arguments to find a Company
+     * @example
+     * // Get one Company
+     * const company = await prisma.company.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CompanyFindFirstArgs>(args?: SelectSubset<T, CompanyFindFirstArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Company that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyFindFirstOrThrowArgs} args - Arguments to find a Company
+     * @example
+     * // Get one Company
+     * const company = await prisma.company.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CompanyFindFirstOrThrowArgs>(args?: SelectSubset<T, CompanyFindFirstOrThrowArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Companies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Companies
+     * const companies = await prisma.company.findMany()
+     * 
+     * // Get first 10 Companies
+     * const companies = await prisma.company.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const companyWithIdOnly = await prisma.company.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CompanyFindManyArgs>(args?: SelectSubset<T, CompanyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Company.
+     * @param {CompanyCreateArgs} args - Arguments to create a Company.
+     * @example
+     * // Create one Company
+     * const Company = await prisma.company.create({
+     *   data: {
+     *     // ... data to create a Company
+     *   }
+     * })
+     * 
+     */
+    create<T extends CompanyCreateArgs>(args: SelectSubset<T, CompanyCreateArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Companies.
+     * @param {CompanyCreateManyArgs} args - Arguments to create many Companies.
+     * @example
+     * // Create many Companies
+     * const company = await prisma.company.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CompanyCreateManyArgs>(args?: SelectSubset<T, CompanyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Companies and returns the data saved in the database.
+     * @param {CompanyCreateManyAndReturnArgs} args - Arguments to create many Companies.
+     * @example
+     * // Create many Companies
+     * const company = await prisma.company.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Companies and only return the `id`
+     * const companyWithIdOnly = await prisma.company.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CompanyCreateManyAndReturnArgs>(args?: SelectSubset<T, CompanyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Company.
+     * @param {CompanyDeleteArgs} args - Arguments to delete one Company.
+     * @example
+     * // Delete one Company
+     * const Company = await prisma.company.delete({
+     *   where: {
+     *     // ... filter to delete one Company
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CompanyDeleteArgs>(args: SelectSubset<T, CompanyDeleteArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Company.
+     * @param {CompanyUpdateArgs} args - Arguments to update one Company.
+     * @example
+     * // Update one Company
+     * const company = await prisma.company.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CompanyUpdateArgs>(args: SelectSubset<T, CompanyUpdateArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Companies.
+     * @param {CompanyDeleteManyArgs} args - Arguments to filter Companies to delete.
+     * @example
+     * // Delete a few Companies
+     * const { count } = await prisma.company.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CompanyDeleteManyArgs>(args?: SelectSubset<T, CompanyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Companies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Companies
+     * const company = await prisma.company.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CompanyUpdateManyArgs>(args: SelectSubset<T, CompanyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Companies and returns the data updated in the database.
+     * @param {CompanyUpdateManyAndReturnArgs} args - Arguments to update many Companies.
+     * @example
+     * // Update many Companies
+     * const company = await prisma.company.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Companies and only return the `id`
+     * const companyWithIdOnly = await prisma.company.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CompanyUpdateManyAndReturnArgs>(args: SelectSubset<T, CompanyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Company.
+     * @param {CompanyUpsertArgs} args - Arguments to update or create a Company.
+     * @example
+     * // Update or create a Company
+     * const company = await prisma.company.upsert({
+     *   create: {
+     *     // ... data to create a Company
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Company we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CompanyUpsertArgs>(args: SelectSubset<T, CompanyUpsertArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Companies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyCountArgs} args - Arguments to filter Companies to count.
+     * @example
+     * // Count the number of Companies
+     * const count = await prisma.company.count({
+     *   where: {
+     *     // ... the filter for the Companies we want to count
+     *   }
+     * })
+    **/
+    count<T extends CompanyCountArgs>(
+      args?: Subset<T, CompanyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CompanyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Company.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CompanyAggregateArgs>(args: Subset<T, CompanyAggregateArgs>): Prisma.PrismaPromise<GetCompanyAggregateType<T>>
+
+    /**
+     * Group by Company.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CompanyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CompanyGroupByArgs['orderBy'] }
+        : { orderBy?: CompanyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CompanyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompanyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Company model
+   */
+  readonly fields: CompanyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Company.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    profile<T extends ProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProfileDefaultArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    shortlists<T extends Company$shortlistsArgs<ExtArgs> = {}>(args?: Subset<T, Company$shortlistsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Company model
+   */
+  interface CompanyFieldRefs {
+    readonly id: FieldRef<"Company", 'String'>
+    readonly name: FieldRef<"Company", 'String'>
+    readonly industry: FieldRef<"Company", 'String'>
+    readonly website: FieldRef<"Company", 'String'>
+    readonly description: FieldRef<"Company", 'String'>
+    readonly profileId: FieldRef<"Company", 'String'>
+    readonly createdAt: FieldRef<"Company", 'DateTime'>
+    readonly updatedAt: FieldRef<"Company", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Company findUnique
+   */
+  export type CompanyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which Company to fetch.
+     */
+    where: CompanyWhereUniqueInput
+  }
+
+  /**
+   * Company findUniqueOrThrow
+   */
+  export type CompanyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which Company to fetch.
+     */
+    where: CompanyWhereUniqueInput
+  }
+
+  /**
+   * Company findFirst
+   */
+  export type CompanyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which Company to fetch.
+     */
+    where?: CompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Companies to fetch.
+     */
+    orderBy?: CompanyOrderByWithRelationInput | CompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Companies.
+     */
+    cursor?: CompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Companies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Companies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Companies.
+     */
+    distinct?: CompanyScalarFieldEnum | CompanyScalarFieldEnum[]
+  }
+
+  /**
+   * Company findFirstOrThrow
+   */
+  export type CompanyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which Company to fetch.
+     */
+    where?: CompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Companies to fetch.
+     */
+    orderBy?: CompanyOrderByWithRelationInput | CompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Companies.
+     */
+    cursor?: CompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Companies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Companies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Companies.
+     */
+    distinct?: CompanyScalarFieldEnum | CompanyScalarFieldEnum[]
+  }
+
+  /**
+   * Company findMany
+   */
+  export type CompanyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
+     * Filter, which Companies to fetch.
+     */
+    where?: CompanyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Companies to fetch.
+     */
+    orderBy?: CompanyOrderByWithRelationInput | CompanyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Companies.
+     */
+    cursor?: CompanyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Companies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Companies.
+     */
+    skip?: number
+    distinct?: CompanyScalarFieldEnum | CompanyScalarFieldEnum[]
+  }
+
+  /**
+   * Company create
+   */
+  export type CompanyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Company.
+     */
+    data: XOR<CompanyCreateInput, CompanyUncheckedCreateInput>
+  }
+
+  /**
+   * Company createMany
+   */
+  export type CompanyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Companies.
+     */
+    data: CompanyCreateManyInput | CompanyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Company createManyAndReturn
+   */
+  export type CompanyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * The data used to create many Companies.
+     */
+    data: CompanyCreateManyInput | CompanyCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Company update
+   */
+  export type CompanyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Company.
+     */
+    data: XOR<CompanyUpdateInput, CompanyUncheckedUpdateInput>
+    /**
+     * Choose, which Company to update.
+     */
+    where: CompanyWhereUniqueInput
+  }
+
+  /**
+   * Company updateMany
+   */
+  export type CompanyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Companies.
+     */
+    data: XOR<CompanyUpdateManyMutationInput, CompanyUncheckedUpdateManyInput>
+    /**
+     * Filter which Companies to update
+     */
+    where?: CompanyWhereInput
+    /**
+     * Limit how many Companies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Company updateManyAndReturn
+   */
+  export type CompanyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * The data used to update Companies.
+     */
+    data: XOR<CompanyUpdateManyMutationInput, CompanyUncheckedUpdateManyInput>
+    /**
+     * Filter which Companies to update
+     */
+    where?: CompanyWhereInput
+    /**
+     * Limit how many Companies to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Company upsert
+   */
+  export type CompanyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Company to update in case it exists.
+     */
+    where: CompanyWhereUniqueInput
+    /**
+     * In case the Company found by the `where` argument doesn't exist, create a new Company with this data.
+     */
+    create: XOR<CompanyCreateInput, CompanyUncheckedCreateInput>
+    /**
+     * In case the Company was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CompanyUpdateInput, CompanyUncheckedUpdateInput>
+  }
+
+  /**
+   * Company delete
+   */
+  export type CompanyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+    /**
+     * Filter which Company to delete.
+     */
+    where: CompanyWhereUniqueInput
+  }
+
+  /**
+   * Company deleteMany
+   */
+  export type CompanyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Companies to delete
+     */
+    where?: CompanyWhereInput
+    /**
+     * Limit how many Companies to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Company.shortlists
+   */
+  export type Company$shortlistsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    where?: ShortlistWhereInput
+    orderBy?: ShortlistOrderByWithRelationInput | ShortlistOrderByWithRelationInput[]
+    cursor?: ShortlistWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ShortlistScalarFieldEnum | ShortlistScalarFieldEnum[]
+  }
+
+  /**
+   * Company without action
+   */
+  export type CompanyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Company
+     */
+    select?: CompanySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Company
+     */
+    omit?: CompanyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Shortlist
+   */
+
+  export type AggregateShortlist = {
+    _count: ShortlistCountAggregateOutputType | null
+    _min: ShortlistMinAggregateOutputType | null
+    _max: ShortlistMaxAggregateOutputType | null
+  }
+
+  export type ShortlistMinAggregateOutputType = {
+    id: string | null
+    companyId: string | null
+    studentId: string | null
+    notes: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ShortlistMaxAggregateOutputType = {
+    id: string | null
+    companyId: string | null
+    studentId: string | null
+    notes: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ShortlistCountAggregateOutputType = {
+    id: number
+    companyId: number
+    studentId: number
+    notes: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ShortlistMinAggregateInputType = {
+    id?: true
+    companyId?: true
+    studentId?: true
+    notes?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ShortlistMaxAggregateInputType = {
+    id?: true
+    companyId?: true
+    studentId?: true
+    notes?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ShortlistCountAggregateInputType = {
+    id?: true
+    companyId?: true
+    studentId?: true
+    notes?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ShortlistAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Shortlist to aggregate.
+     */
+    where?: ShortlistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Shortlists to fetch.
+     */
+    orderBy?: ShortlistOrderByWithRelationInput | ShortlistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ShortlistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Shortlists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Shortlists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Shortlists
+    **/
+    _count?: true | ShortlistCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ShortlistMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ShortlistMaxAggregateInputType
+  }
+
+  export type GetShortlistAggregateType<T extends ShortlistAggregateArgs> = {
+        [P in keyof T & keyof AggregateShortlist]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateShortlist[P]>
+      : GetScalarType<T[P], AggregateShortlist[P]>
+  }
+
+
+
+
+  export type ShortlistGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ShortlistWhereInput
+    orderBy?: ShortlistOrderByWithAggregationInput | ShortlistOrderByWithAggregationInput[]
+    by: ShortlistScalarFieldEnum[] | ShortlistScalarFieldEnum
+    having?: ShortlistScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ShortlistCountAggregateInputType | true
+    _min?: ShortlistMinAggregateInputType
+    _max?: ShortlistMaxAggregateInputType
+  }
+
+  export type ShortlistGroupByOutputType = {
+    id: string
+    companyId: string
+    studentId: string
+    notes: string | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ShortlistCountAggregateOutputType | null
+    _min: ShortlistMinAggregateOutputType | null
+    _max: ShortlistMaxAggregateOutputType | null
+  }
+
+  type GetShortlistGroupByPayload<T extends ShortlistGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ShortlistGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ShortlistGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ShortlistGroupByOutputType[P]>
+            : GetScalarType<T[P], ShortlistGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ShortlistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companyId?: boolean
+    studentId?: boolean
+    notes?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    student?: boolean | ProfileDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["shortlist"]>
+
+  export type ShortlistSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companyId?: boolean
+    studentId?: boolean
+    notes?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    student?: boolean | ProfileDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["shortlist"]>
+
+  export type ShortlistSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companyId?: boolean
+    studentId?: boolean
+    notes?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    student?: boolean | ProfileDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["shortlist"]>
+
+  export type ShortlistSelectScalar = {
+    id?: boolean
+    companyId?: boolean
+    studentId?: boolean
+    notes?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ShortlistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "companyId" | "studentId" | "notes" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["shortlist"]>
+  export type ShortlistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    student?: boolean | ProfileDefaultArgs<ExtArgs>
+  }
+  export type ShortlistIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    student?: boolean | ProfileDefaultArgs<ExtArgs>
+  }
+  export type ShortlistIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    student?: boolean | ProfileDefaultArgs<ExtArgs>
+  }
+
+  export type $ShortlistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Shortlist"
+    objects: {
+      company: Prisma.$CompanyPayload<ExtArgs>
+      student: Prisma.$ProfilePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      companyId: string
+      studentId: string
+      notes: string | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["shortlist"]>
+    composites: {}
+  }
+
+  type ShortlistGetPayload<S extends boolean | null | undefined | ShortlistDefaultArgs> = $Result.GetResult<Prisma.$ShortlistPayload, S>
+
+  type ShortlistCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ShortlistFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ShortlistCountAggregateInputType | true
+    }
+
+  export interface ShortlistDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Shortlist'], meta: { name: 'Shortlist' } }
+    /**
+     * Find zero or one Shortlist that matches the filter.
+     * @param {ShortlistFindUniqueArgs} args - Arguments to find a Shortlist
+     * @example
+     * // Get one Shortlist
+     * const shortlist = await prisma.shortlist.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ShortlistFindUniqueArgs>(args: SelectSubset<T, ShortlistFindUniqueArgs<ExtArgs>>): Prisma__ShortlistClient<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Shortlist that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ShortlistFindUniqueOrThrowArgs} args - Arguments to find a Shortlist
+     * @example
+     * // Get one Shortlist
+     * const shortlist = await prisma.shortlist.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ShortlistFindUniqueOrThrowArgs>(args: SelectSubset<T, ShortlistFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ShortlistClient<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Shortlist that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShortlistFindFirstArgs} args - Arguments to find a Shortlist
+     * @example
+     * // Get one Shortlist
+     * const shortlist = await prisma.shortlist.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ShortlistFindFirstArgs>(args?: SelectSubset<T, ShortlistFindFirstArgs<ExtArgs>>): Prisma__ShortlistClient<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Shortlist that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShortlistFindFirstOrThrowArgs} args - Arguments to find a Shortlist
+     * @example
+     * // Get one Shortlist
+     * const shortlist = await prisma.shortlist.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ShortlistFindFirstOrThrowArgs>(args?: SelectSubset<T, ShortlistFindFirstOrThrowArgs<ExtArgs>>): Prisma__ShortlistClient<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Shortlists that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShortlistFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Shortlists
+     * const shortlists = await prisma.shortlist.findMany()
+     * 
+     * // Get first 10 Shortlists
+     * const shortlists = await prisma.shortlist.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const shortlistWithIdOnly = await prisma.shortlist.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ShortlistFindManyArgs>(args?: SelectSubset<T, ShortlistFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Shortlist.
+     * @param {ShortlistCreateArgs} args - Arguments to create a Shortlist.
+     * @example
+     * // Create one Shortlist
+     * const Shortlist = await prisma.shortlist.create({
+     *   data: {
+     *     // ... data to create a Shortlist
+     *   }
+     * })
+     * 
+     */
+    create<T extends ShortlistCreateArgs>(args: SelectSubset<T, ShortlistCreateArgs<ExtArgs>>): Prisma__ShortlistClient<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Shortlists.
+     * @param {ShortlistCreateManyArgs} args - Arguments to create many Shortlists.
+     * @example
+     * // Create many Shortlists
+     * const shortlist = await prisma.shortlist.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ShortlistCreateManyArgs>(args?: SelectSubset<T, ShortlistCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Shortlists and returns the data saved in the database.
+     * @param {ShortlistCreateManyAndReturnArgs} args - Arguments to create many Shortlists.
+     * @example
+     * // Create many Shortlists
+     * const shortlist = await prisma.shortlist.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Shortlists and only return the `id`
+     * const shortlistWithIdOnly = await prisma.shortlist.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ShortlistCreateManyAndReturnArgs>(args?: SelectSubset<T, ShortlistCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Shortlist.
+     * @param {ShortlistDeleteArgs} args - Arguments to delete one Shortlist.
+     * @example
+     * // Delete one Shortlist
+     * const Shortlist = await prisma.shortlist.delete({
+     *   where: {
+     *     // ... filter to delete one Shortlist
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ShortlistDeleteArgs>(args: SelectSubset<T, ShortlistDeleteArgs<ExtArgs>>): Prisma__ShortlistClient<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Shortlist.
+     * @param {ShortlistUpdateArgs} args - Arguments to update one Shortlist.
+     * @example
+     * // Update one Shortlist
+     * const shortlist = await prisma.shortlist.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ShortlistUpdateArgs>(args: SelectSubset<T, ShortlistUpdateArgs<ExtArgs>>): Prisma__ShortlistClient<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Shortlists.
+     * @param {ShortlistDeleteManyArgs} args - Arguments to filter Shortlists to delete.
+     * @example
+     * // Delete a few Shortlists
+     * const { count } = await prisma.shortlist.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ShortlistDeleteManyArgs>(args?: SelectSubset<T, ShortlistDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Shortlists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShortlistUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Shortlists
+     * const shortlist = await prisma.shortlist.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ShortlistUpdateManyArgs>(args: SelectSubset<T, ShortlistUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Shortlists and returns the data updated in the database.
+     * @param {ShortlistUpdateManyAndReturnArgs} args - Arguments to update many Shortlists.
+     * @example
+     * // Update many Shortlists
+     * const shortlist = await prisma.shortlist.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Shortlists and only return the `id`
+     * const shortlistWithIdOnly = await prisma.shortlist.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ShortlistUpdateManyAndReturnArgs>(args: SelectSubset<T, ShortlistUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Shortlist.
+     * @param {ShortlistUpsertArgs} args - Arguments to update or create a Shortlist.
+     * @example
+     * // Update or create a Shortlist
+     * const shortlist = await prisma.shortlist.upsert({
+     *   create: {
+     *     // ... data to create a Shortlist
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Shortlist we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ShortlistUpsertArgs>(args: SelectSubset<T, ShortlistUpsertArgs<ExtArgs>>): Prisma__ShortlistClient<$Result.GetResult<Prisma.$ShortlistPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Shortlists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShortlistCountArgs} args - Arguments to filter Shortlists to count.
+     * @example
+     * // Count the number of Shortlists
+     * const count = await prisma.shortlist.count({
+     *   where: {
+     *     // ... the filter for the Shortlists we want to count
+     *   }
+     * })
+    **/
+    count<T extends ShortlistCountArgs>(
+      args?: Subset<T, ShortlistCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ShortlistCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Shortlist.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShortlistAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ShortlistAggregateArgs>(args: Subset<T, ShortlistAggregateArgs>): Prisma.PrismaPromise<GetShortlistAggregateType<T>>
+
+    /**
+     * Group by Shortlist.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShortlistGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ShortlistGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ShortlistGroupByArgs['orderBy'] }
+        : { orderBy?: ShortlistGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ShortlistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetShortlistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Shortlist model
+   */
+  readonly fields: ShortlistFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Shortlist.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ShortlistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    student<T extends ProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProfileDefaultArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Shortlist model
+   */
+  interface ShortlistFieldRefs {
+    readonly id: FieldRef<"Shortlist", 'String'>
+    readonly companyId: FieldRef<"Shortlist", 'String'>
+    readonly studentId: FieldRef<"Shortlist", 'String'>
+    readonly notes: FieldRef<"Shortlist", 'String'>
+    readonly status: FieldRef<"Shortlist", 'String'>
+    readonly createdAt: FieldRef<"Shortlist", 'DateTime'>
+    readonly updatedAt: FieldRef<"Shortlist", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Shortlist findUnique
+   */
+  export type ShortlistFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    /**
+     * Filter, which Shortlist to fetch.
+     */
+    where: ShortlistWhereUniqueInput
+  }
+
+  /**
+   * Shortlist findUniqueOrThrow
+   */
+  export type ShortlistFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    /**
+     * Filter, which Shortlist to fetch.
+     */
+    where: ShortlistWhereUniqueInput
+  }
+
+  /**
+   * Shortlist findFirst
+   */
+  export type ShortlistFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    /**
+     * Filter, which Shortlist to fetch.
+     */
+    where?: ShortlistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Shortlists to fetch.
+     */
+    orderBy?: ShortlistOrderByWithRelationInput | ShortlistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Shortlists.
+     */
+    cursor?: ShortlistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Shortlists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Shortlists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Shortlists.
+     */
+    distinct?: ShortlistScalarFieldEnum | ShortlistScalarFieldEnum[]
+  }
+
+  /**
+   * Shortlist findFirstOrThrow
+   */
+  export type ShortlistFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    /**
+     * Filter, which Shortlist to fetch.
+     */
+    where?: ShortlistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Shortlists to fetch.
+     */
+    orderBy?: ShortlistOrderByWithRelationInput | ShortlistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Shortlists.
+     */
+    cursor?: ShortlistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Shortlists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Shortlists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Shortlists.
+     */
+    distinct?: ShortlistScalarFieldEnum | ShortlistScalarFieldEnum[]
+  }
+
+  /**
+   * Shortlist findMany
+   */
+  export type ShortlistFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    /**
+     * Filter, which Shortlists to fetch.
+     */
+    where?: ShortlistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Shortlists to fetch.
+     */
+    orderBy?: ShortlistOrderByWithRelationInput | ShortlistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Shortlists.
+     */
+    cursor?: ShortlistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Shortlists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Shortlists.
+     */
+    skip?: number
+    distinct?: ShortlistScalarFieldEnum | ShortlistScalarFieldEnum[]
+  }
+
+  /**
+   * Shortlist create
+   */
+  export type ShortlistCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Shortlist.
+     */
+    data: XOR<ShortlistCreateInput, ShortlistUncheckedCreateInput>
+  }
+
+  /**
+   * Shortlist createMany
+   */
+  export type ShortlistCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Shortlists.
+     */
+    data: ShortlistCreateManyInput | ShortlistCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Shortlist createManyAndReturn
+   */
+  export type ShortlistCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * The data used to create many Shortlists.
+     */
+    data: ShortlistCreateManyInput | ShortlistCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Shortlist update
+   */
+  export type ShortlistUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Shortlist.
+     */
+    data: XOR<ShortlistUpdateInput, ShortlistUncheckedUpdateInput>
+    /**
+     * Choose, which Shortlist to update.
+     */
+    where: ShortlistWhereUniqueInput
+  }
+
+  /**
+   * Shortlist updateMany
+   */
+  export type ShortlistUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Shortlists.
+     */
+    data: XOR<ShortlistUpdateManyMutationInput, ShortlistUncheckedUpdateManyInput>
+    /**
+     * Filter which Shortlists to update
+     */
+    where?: ShortlistWhereInput
+    /**
+     * Limit how many Shortlists to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Shortlist updateManyAndReturn
+   */
+  export type ShortlistUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * The data used to update Shortlists.
+     */
+    data: XOR<ShortlistUpdateManyMutationInput, ShortlistUncheckedUpdateManyInput>
+    /**
+     * Filter which Shortlists to update
+     */
+    where?: ShortlistWhereInput
+    /**
+     * Limit how many Shortlists to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Shortlist upsert
+   */
+  export type ShortlistUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Shortlist to update in case it exists.
+     */
+    where: ShortlistWhereUniqueInput
+    /**
+     * In case the Shortlist found by the `where` argument doesn't exist, create a new Shortlist with this data.
+     */
+    create: XOR<ShortlistCreateInput, ShortlistUncheckedCreateInput>
+    /**
+     * In case the Shortlist was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ShortlistUpdateInput, ShortlistUncheckedUpdateInput>
+  }
+
+  /**
+   * Shortlist delete
+   */
+  export type ShortlistDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+    /**
+     * Filter which Shortlist to delete.
+     */
+    where: ShortlistWhereUniqueInput
+  }
+
+  /**
+   * Shortlist deleteMany
+   */
+  export type ShortlistDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Shortlists to delete
+     */
+    where?: ShortlistWhereInput
+    /**
+     * Limit how many Shortlists to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Shortlist without action
+   */
+  export type ShortlistDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shortlist
+     */
+    select?: ShortlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shortlist
+     */
+    omit?: ShortlistOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShortlistInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -14342,6 +16937,8 @@ export namespace Prisma {
     isVerified: 'isVerified',
     isOpenToRecruiters: 'isOpenToRecruiters',
     institutionId: 'institutionId',
+    permissions: 'permissions',
+    createdBy: 'createdBy',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -14388,6 +16985,7 @@ export namespace Prisma {
     type: 'type',
     address: 'address',
     state: 'state',
+    cgpaScale: 'cgpaScale',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -14406,6 +17004,8 @@ export namespace Prisma {
     code: 'code',
     grade: 'grade',
     score: 'score',
+    classRank: 'classRank',
+    classSize: 'classSize',
     isVerified: 'isVerified',
     verifiedBy: 'verifiedBy',
     createdAt: 'createdAt',
@@ -14486,6 +17086,33 @@ export namespace Prisma {
   export type NinScalarFieldEnum = (typeof NinScalarFieldEnum)[keyof typeof NinScalarFieldEnum]
 
 
+  export const CompanyScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    industry: 'industry',
+    website: 'website',
+    description: 'description',
+    profileId: 'profileId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CompanyScalarFieldEnum = (typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum]
+
+
+  export const ShortlistScalarFieldEnum: {
+    id: 'id',
+    companyId: 'companyId',
+    studentId: 'studentId',
+    notes: 'notes',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ShortlistScalarFieldEnum = (typeof ShortlistScalarFieldEnum)[keyof typeof ShortlistScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -14494,12 +17121,29 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
   export const QueryMode: {
     default: 'default',
     insensitive: 'insensitive'
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   export const NullsOrder: {
@@ -14547,6 +17191,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -14599,6 +17257,8 @@ export namespace Prisma {
     isVerified?: BoolFilter<"Profile"> | boolean
     isOpenToRecruiters?: BoolFilter<"Profile"> | boolean
     institutionId?: StringNullableFilter<"Profile"> | string | null
+    permissions?: JsonNullableFilter<"Profile">
+    createdBy?: StringNullableFilter<"Profile"> | string | null
     createdAt?: DateTimeFilter<"Profile"> | Date | string
     updatedAt?: DateTimeFilter<"Profile"> | Date | string
     institution?: XOR<InstitutionNullableScalarRelationFilter, InstitutionWhereInput> | null
@@ -14607,6 +17267,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationListRelationFilter
     sentRequests?: AccessRequestListRelationFilter
     receivedRequests?: AccessRequestListRelationFilter
+    company?: XOR<CompanyNullableScalarRelationFilter, CompanyWhereInput> | null
+    shortlistedBy?: ShortlistListRelationFilter
     ninRef?: XOR<NinNullableScalarRelationFilter, NinWhereInput> | null
   }
 
@@ -14625,6 +17287,8 @@ export namespace Prisma {
     isVerified?: SortOrder
     isOpenToRecruiters?: SortOrder
     institutionId?: SortOrderInput | SortOrder
+    permissions?: SortOrderInput | SortOrder
+    createdBy?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     institution?: InstitutionOrderByWithRelationInput
@@ -14633,6 +17297,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationOrderByRelationAggregateInput
     sentRequests?: AccessRequestOrderByRelationAggregateInput
     receivedRequests?: AccessRequestOrderByRelationAggregateInput
+    company?: CompanyOrderByWithRelationInput
+    shortlistedBy?: ShortlistOrderByRelationAggregateInput
     ninRef?: NinOrderByWithRelationInput
   }
 
@@ -14654,6 +17320,8 @@ export namespace Prisma {
     isVerified?: BoolFilter<"Profile"> | boolean
     isOpenToRecruiters?: BoolFilter<"Profile"> | boolean
     institutionId?: StringNullableFilter<"Profile"> | string | null
+    permissions?: JsonNullableFilter<"Profile">
+    createdBy?: StringNullableFilter<"Profile"> | string | null
     createdAt?: DateTimeFilter<"Profile"> | Date | string
     updatedAt?: DateTimeFilter<"Profile"> | Date | string
     institution?: XOR<InstitutionNullableScalarRelationFilter, InstitutionWhereInput> | null
@@ -14662,6 +17330,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationListRelationFilter
     sentRequests?: AccessRequestListRelationFilter
     receivedRequests?: AccessRequestListRelationFilter
+    company?: XOR<CompanyNullableScalarRelationFilter, CompanyWhereInput> | null
+    shortlistedBy?: ShortlistListRelationFilter
     ninRef?: XOR<NinNullableScalarRelationFilter, NinWhereInput> | null
   }, "id" | "nin" | "email">
 
@@ -14680,6 +17350,8 @@ export namespace Prisma {
     isVerified?: SortOrder
     isOpenToRecruiters?: SortOrder
     institutionId?: SortOrderInput | SortOrder
+    permissions?: SortOrderInput | SortOrder
+    createdBy?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ProfileCountOrderByAggregateInput
@@ -14705,6 +17377,8 @@ export namespace Prisma {
     isVerified?: BoolWithAggregatesFilter<"Profile"> | boolean
     isOpenToRecruiters?: BoolWithAggregatesFilter<"Profile"> | boolean
     institutionId?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    permissions?: JsonNullableWithAggregatesFilter<"Profile">
+    createdBy?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Profile"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Profile"> | Date | string
   }
@@ -14881,6 +17555,7 @@ export namespace Prisma {
     type?: StringFilter<"Institution"> | string
     address?: StringNullableFilter<"Institution"> | string | null
     state?: StringNullableFilter<"Institution"> | string | null
+    cgpaScale?: FloatNullableFilter<"Institution"> | number | null
     createdAt?: DateTimeFilter<"Institution"> | Date | string
     updatedAt?: DateTimeFilter<"Institution"> | Date | string
     academicRecords?: AcademicRecordListRelationFilter
@@ -14893,6 +17568,7 @@ export namespace Prisma {
     type?: SortOrder
     address?: SortOrderInput | SortOrder
     state?: SortOrderInput | SortOrder
+    cgpaScale?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     academicRecords?: AcademicRecordOrderByRelationAggregateInput
@@ -14908,6 +17584,7 @@ export namespace Prisma {
     type?: StringFilter<"Institution"> | string
     address?: StringNullableFilter<"Institution"> | string | null
     state?: StringNullableFilter<"Institution"> | string | null
+    cgpaScale?: FloatNullableFilter<"Institution"> | number | null
     createdAt?: DateTimeFilter<"Institution"> | Date | string
     updatedAt?: DateTimeFilter<"Institution"> | Date | string
     academicRecords?: AcademicRecordListRelationFilter
@@ -14920,11 +17597,14 @@ export namespace Prisma {
     type?: SortOrder
     address?: SortOrderInput | SortOrder
     state?: SortOrderInput | SortOrder
+    cgpaScale?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: InstitutionCountOrderByAggregateInput
+    _avg?: InstitutionAvgOrderByAggregateInput
     _max?: InstitutionMaxOrderByAggregateInput
     _min?: InstitutionMinOrderByAggregateInput
+    _sum?: InstitutionSumOrderByAggregateInput
   }
 
   export type InstitutionScalarWhereWithAggregatesInput = {
@@ -14936,6 +17616,7 @@ export namespace Prisma {
     type?: StringWithAggregatesFilter<"Institution"> | string
     address?: StringNullableWithAggregatesFilter<"Institution"> | string | null
     state?: StringNullableWithAggregatesFilter<"Institution"> | string | null
+    cgpaScale?: FloatNullableWithAggregatesFilter<"Institution"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Institution"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Institution"> | Date | string
   }
@@ -14954,6 +17635,8 @@ export namespace Prisma {
     code?: StringNullableFilter<"AcademicRecord"> | string | null
     grade?: StringNullableFilter<"AcademicRecord"> | string | null
     score?: FloatNullableFilter<"AcademicRecord"> | number | null
+    classRank?: IntNullableFilter<"AcademicRecord"> | number | null
+    classSize?: IntNullableFilter<"AcademicRecord"> | number | null
     isVerified?: BoolFilter<"AcademicRecord"> | boolean
     verifiedBy?: StringNullableFilter<"AcademicRecord"> | string | null
     createdAt?: DateTimeFilter<"AcademicRecord"> | Date | string
@@ -14973,6 +17656,8 @@ export namespace Prisma {
     code?: SortOrderInput | SortOrder
     grade?: SortOrderInput | SortOrder
     score?: SortOrderInput | SortOrder
+    classRank?: SortOrderInput | SortOrder
+    classSize?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     verifiedBy?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -14995,6 +17680,8 @@ export namespace Prisma {
     code?: StringNullableFilter<"AcademicRecord"> | string | null
     grade?: StringNullableFilter<"AcademicRecord"> | string | null
     score?: FloatNullableFilter<"AcademicRecord"> | number | null
+    classRank?: IntNullableFilter<"AcademicRecord"> | number | null
+    classSize?: IntNullableFilter<"AcademicRecord"> | number | null
     isVerified?: BoolFilter<"AcademicRecord"> | boolean
     verifiedBy?: StringNullableFilter<"AcademicRecord"> | string | null
     createdAt?: DateTimeFilter<"AcademicRecord"> | Date | string
@@ -15014,6 +17701,8 @@ export namespace Prisma {
     code?: SortOrderInput | SortOrder
     grade?: SortOrderInput | SortOrder
     score?: SortOrderInput | SortOrder
+    classRank?: SortOrderInput | SortOrder
+    classSize?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     verifiedBy?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -15039,6 +17728,8 @@ export namespace Prisma {
     code?: StringNullableWithAggregatesFilter<"AcademicRecord"> | string | null
     grade?: StringNullableWithAggregatesFilter<"AcademicRecord"> | string | null
     score?: FloatNullableWithAggregatesFilter<"AcademicRecord"> | number | null
+    classRank?: IntNullableWithAggregatesFilter<"AcademicRecord"> | number | null
+    classSize?: IntNullableWithAggregatesFilter<"AcademicRecord"> | number | null
     isVerified?: BoolWithAggregatesFilter<"AcademicRecord"> | boolean
     verifiedBy?: StringNullableWithAggregatesFilter<"AcademicRecord"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"AcademicRecord"> | Date | string
@@ -15408,6 +18099,148 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Nin"> | Date | string
   }
 
+  export type CompanyWhereInput = {
+    AND?: CompanyWhereInput | CompanyWhereInput[]
+    OR?: CompanyWhereInput[]
+    NOT?: CompanyWhereInput | CompanyWhereInput[]
+    id?: StringFilter<"Company"> | string
+    name?: StringFilter<"Company"> | string
+    industry?: StringNullableFilter<"Company"> | string | null
+    website?: StringNullableFilter<"Company"> | string | null
+    description?: StringNullableFilter<"Company"> | string | null
+    profileId?: UuidFilter<"Company"> | string
+    createdAt?: DateTimeFilter<"Company"> | Date | string
+    updatedAt?: DateTimeFilter<"Company"> | Date | string
+    profile?: XOR<ProfileScalarRelationFilter, ProfileWhereInput>
+    shortlists?: ShortlistListRelationFilter
+  }
+
+  export type CompanyOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    industry?: SortOrderInput | SortOrder
+    website?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    profileId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    profile?: ProfileOrderByWithRelationInput
+    shortlists?: ShortlistOrderByRelationAggregateInput
+  }
+
+  export type CompanyWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    profileId?: string
+    AND?: CompanyWhereInput | CompanyWhereInput[]
+    OR?: CompanyWhereInput[]
+    NOT?: CompanyWhereInput | CompanyWhereInput[]
+    name?: StringFilter<"Company"> | string
+    industry?: StringNullableFilter<"Company"> | string | null
+    website?: StringNullableFilter<"Company"> | string | null
+    description?: StringNullableFilter<"Company"> | string | null
+    createdAt?: DateTimeFilter<"Company"> | Date | string
+    updatedAt?: DateTimeFilter<"Company"> | Date | string
+    profile?: XOR<ProfileScalarRelationFilter, ProfileWhereInput>
+    shortlists?: ShortlistListRelationFilter
+  }, "id" | "profileId">
+
+  export type CompanyOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    industry?: SortOrderInput | SortOrder
+    website?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    profileId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CompanyCountOrderByAggregateInput
+    _max?: CompanyMaxOrderByAggregateInput
+    _min?: CompanyMinOrderByAggregateInput
+  }
+
+  export type CompanyScalarWhereWithAggregatesInput = {
+    AND?: CompanyScalarWhereWithAggregatesInput | CompanyScalarWhereWithAggregatesInput[]
+    OR?: CompanyScalarWhereWithAggregatesInput[]
+    NOT?: CompanyScalarWhereWithAggregatesInput | CompanyScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Company"> | string
+    name?: StringWithAggregatesFilter<"Company"> | string
+    industry?: StringNullableWithAggregatesFilter<"Company"> | string | null
+    website?: StringNullableWithAggregatesFilter<"Company"> | string | null
+    description?: StringNullableWithAggregatesFilter<"Company"> | string | null
+    profileId?: UuidWithAggregatesFilter<"Company"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
+  }
+
+  export type ShortlistWhereInput = {
+    AND?: ShortlistWhereInput | ShortlistWhereInput[]
+    OR?: ShortlistWhereInput[]
+    NOT?: ShortlistWhereInput | ShortlistWhereInput[]
+    id?: StringFilter<"Shortlist"> | string
+    companyId?: StringFilter<"Shortlist"> | string
+    studentId?: UuidFilter<"Shortlist"> | string
+    notes?: StringNullableFilter<"Shortlist"> | string | null
+    status?: StringFilter<"Shortlist"> | string
+    createdAt?: DateTimeFilter<"Shortlist"> | Date | string
+    updatedAt?: DateTimeFilter<"Shortlist"> | Date | string
+    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
+    student?: XOR<ProfileScalarRelationFilter, ProfileWhereInput>
+  }
+
+  export type ShortlistOrderByWithRelationInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    studentId?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    company?: CompanyOrderByWithRelationInput
+    student?: ProfileOrderByWithRelationInput
+  }
+
+  export type ShortlistWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    companyId_studentId?: ShortlistCompanyIdStudentIdCompoundUniqueInput
+    AND?: ShortlistWhereInput | ShortlistWhereInput[]
+    OR?: ShortlistWhereInput[]
+    NOT?: ShortlistWhereInput | ShortlistWhereInput[]
+    companyId?: StringFilter<"Shortlist"> | string
+    studentId?: UuidFilter<"Shortlist"> | string
+    notes?: StringNullableFilter<"Shortlist"> | string | null
+    status?: StringFilter<"Shortlist"> | string
+    createdAt?: DateTimeFilter<"Shortlist"> | Date | string
+    updatedAt?: DateTimeFilter<"Shortlist"> | Date | string
+    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
+    student?: XOR<ProfileScalarRelationFilter, ProfileWhereInput>
+  }, "id" | "companyId_studentId">
+
+  export type ShortlistOrderByWithAggregationInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    studentId?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ShortlistCountOrderByAggregateInput
+    _max?: ShortlistMaxOrderByAggregateInput
+    _min?: ShortlistMinOrderByAggregateInput
+  }
+
+  export type ShortlistScalarWhereWithAggregatesInput = {
+    AND?: ShortlistScalarWhereWithAggregatesInput | ShortlistScalarWhereWithAggregatesInput[]
+    OR?: ShortlistScalarWhereWithAggregatesInput[]
+    NOT?: ShortlistScalarWhereWithAggregatesInput | ShortlistScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Shortlist"> | string
+    companyId?: StringWithAggregatesFilter<"Shortlist"> | string
+    studentId?: UuidWithAggregatesFilter<"Shortlist"> | string
+    notes?: StringNullableWithAggregatesFilter<"Shortlist"> | string | null
+    status?: StringWithAggregatesFilter<"Shortlist"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Shortlist"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Shortlist"> | Date | string
+  }
+
   export type ProfileCreateInput = {
     id?: string
     role?: string | null
@@ -15421,6 +18254,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     institution?: InstitutionCreateNestedOneWithoutMembersInput
@@ -15429,6 +18264,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestCreateNestedManyWithoutStudentInput
+    company?: CompanyCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistCreateNestedManyWithoutStudentInput
     ninRef?: NinCreateNestedOneWithoutProfileInput
   }
 
@@ -15447,6 +18284,8 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutProfileInput
@@ -15454,6 +18293,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUncheckedCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestUncheckedCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestUncheckedCreateNestedManyWithoutStudentInput
+    company?: CompanyUncheckedCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type ProfileUpdateInput = {
@@ -15469,6 +18310,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     institution?: InstitutionUpdateOneWithoutMembersNestedInput
@@ -15477,6 +18320,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUpdateManyWithoutStudentNestedInput
+    company?: CompanyUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUpdateManyWithoutStudentNestedInput
     ninRef?: NinUpdateOneWithoutProfileNestedInput
   }
 
@@ -15495,6 +18340,8 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
     institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUncheckedUpdateManyWithoutProfileNestedInput
@@ -15502,6 +18349,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUncheckedUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUncheckedUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUncheckedUpdateManyWithoutStudentNestedInput
+    company?: CompanyUncheckedUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type ProfileCreateManyInput = {
@@ -15519,6 +18368,8 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15536,6 +18387,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15555,6 +18408,8 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
     institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15731,6 +18586,7 @@ export namespace Prisma {
     type: string
     address?: string | null
     state?: string | null
+    cgpaScale?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordCreateNestedManyWithoutInstitutionInput
@@ -15743,6 +18599,7 @@ export namespace Prisma {
     type: string
     address?: string | null
     state?: string | null
+    cgpaScale?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutInstitutionInput
@@ -15755,6 +18612,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    cgpaScale?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUpdateManyWithoutInstitutionNestedInput
@@ -15767,6 +18625,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    cgpaScale?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUncheckedUpdateManyWithoutInstitutionNestedInput
@@ -15779,6 +18638,7 @@ export namespace Prisma {
     type: string
     address?: string | null
     state?: string | null
+    cgpaScale?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15789,6 +18649,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    cgpaScale?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15799,6 +18660,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    cgpaScale?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15812,6 +18674,8 @@ export namespace Prisma {
     code?: string | null
     grade?: string | null
     score?: number | null
+    classRank?: number | null
+    classSize?: number | null
     isVerified?: boolean
     verifiedBy?: string | null
     createdAt?: Date | string
@@ -15831,6 +18695,8 @@ export namespace Prisma {
     code?: string | null
     grade?: string | null
     score?: number | null
+    classRank?: number | null
+    classSize?: number | null
     isVerified?: boolean
     verifiedBy?: string | null
     createdAt?: Date | string
@@ -15846,6 +18712,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15865,6 +18733,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15882,6 +18752,8 @@ export namespace Prisma {
     code?: string | null
     grade?: string | null
     score?: number | null
+    classRank?: number | null
+    classSize?: number | null
     isVerified?: boolean
     verifiedBy?: string | null
     createdAt?: Date | string
@@ -15897,6 +18769,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15914,6 +18788,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16320,6 +19196,154 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CompanyCreateInput = {
+    id?: string
+    name: string
+    industry?: string | null
+    website?: string | null
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profile: ProfileCreateNestedOneWithoutCompanyInput
+    shortlists?: ShortlistCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateInput = {
+    id?: string
+    name: string
+    industry?: string | null
+    website?: string | null
+    description?: string | null
+    profileId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    shortlists?: ShortlistUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profile?: ProfileUpdateOneRequiredWithoutCompanyNestedInput
+    shortlists?: ShortlistUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    profileId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    shortlists?: ShortlistUncheckedUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyCreateManyInput = {
+    id?: string
+    name: string
+    industry?: string | null
+    website?: string | null
+    description?: string | null
+    profileId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    profileId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShortlistCreateInput = {
+    id?: string
+    notes?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutShortlistsInput
+    student: ProfileCreateNestedOneWithoutShortlistedByInput
+  }
+
+  export type ShortlistUncheckedCreateInput = {
+    id?: string
+    companyId: string
+    studentId: string
+    notes?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShortlistUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutShortlistsNestedInput
+    student?: ProfileUpdateOneRequiredWithoutShortlistedByNestedInput
+  }
+
+  export type ShortlistUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShortlistCreateManyInput = {
+    id?: string
+    companyId: string
+    studentId: string
+    notes?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShortlistUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShortlistUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UuidFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -16362,6 +19386,29 @@ export namespace Prisma {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -16403,6 +19450,17 @@ export namespace Prisma {
     none?: AccessRequestWhereInput
   }
 
+  export type CompanyNullableScalarRelationFilter = {
+    is?: CompanyWhereInput | null
+    isNot?: CompanyWhereInput | null
+  }
+
+  export type ShortlistListRelationFilter = {
+    every?: ShortlistWhereInput
+    some?: ShortlistWhereInput
+    none?: ShortlistWhereInput
+  }
+
   export type NinNullableScalarRelationFilter = {
     is?: NinWhereInput | null
     isNot?: NinWhereInput | null
@@ -16429,6 +19487,10 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type ShortlistOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type ProfileCountOrderByAggregateInput = {
     id?: SortOrder
     role?: SortOrder
@@ -16444,6 +19506,8 @@ export namespace Prisma {
     isVerified?: SortOrder
     isOpenToRecruiters?: SortOrder
     institutionId?: SortOrder
+    permissions?: SortOrder
+    createdBy?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16463,6 +19527,7 @@ export namespace Prisma {
     isVerified?: SortOrder
     isOpenToRecruiters?: SortOrder
     institutionId?: SortOrder
+    createdBy?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16482,6 +19547,7 @@ export namespace Prisma {
     isVerified?: SortOrder
     isOpenToRecruiters?: SortOrder
     institutionId?: SortOrder
+    createdBy?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16539,6 +19605,32 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -16670,6 +19762,17 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type ProfileListRelationFilter = {
     every?: ProfileWhereInput
     some?: ProfileWhereInput
@@ -16686,8 +19789,13 @@ export namespace Prisma {
     type?: SortOrder
     address?: SortOrder
     state?: SortOrder
+    cgpaScale?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type InstitutionAvgOrderByAggregateInput = {
+    cgpaScale?: SortOrder
   }
 
   export type InstitutionMaxOrderByAggregateInput = {
@@ -16696,6 +19804,7 @@ export namespace Prisma {
     type?: SortOrder
     address?: SortOrder
     state?: SortOrder
+    cgpaScale?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16706,11 +19815,16 @@ export namespace Prisma {
     type?: SortOrder
     address?: SortOrder
     state?: SortOrder
+    cgpaScale?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
+  export type InstitutionSumOrderByAggregateInput = {
+    cgpaScale?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -16718,7 +19832,23 @@ export namespace Prisma {
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type InstitutionScalarRelationFilter = {
@@ -16737,6 +19867,8 @@ export namespace Prisma {
     code?: SortOrder
     grade?: SortOrder
     score?: SortOrder
+    classRank?: SortOrder
+    classSize?: SortOrder
     isVerified?: SortOrder
     verifiedBy?: SortOrder
     createdAt?: SortOrder
@@ -16745,6 +19877,8 @@ export namespace Prisma {
 
   export type AcademicRecordAvgOrderByAggregateInput = {
     score?: SortOrder
+    classRank?: SortOrder
+    classSize?: SortOrder
   }
 
   export type AcademicRecordMaxOrderByAggregateInput = {
@@ -16758,6 +19892,8 @@ export namespace Prisma {
     code?: SortOrder
     grade?: SortOrder
     score?: SortOrder
+    classRank?: SortOrder
+    classSize?: SortOrder
     isVerified?: SortOrder
     verifiedBy?: SortOrder
     createdAt?: SortOrder
@@ -16775,6 +19911,8 @@ export namespace Prisma {
     code?: SortOrder
     grade?: SortOrder
     score?: SortOrder
+    classRank?: SortOrder
+    classSize?: SortOrder
     isVerified?: SortOrder
     verifiedBy?: SortOrder
     createdAt?: SortOrder
@@ -16783,22 +19921,24 @@ export namespace Prisma {
 
   export type AcademicRecordSumOrderByAggregateInput = {
     score?: SortOrder
+    classRank?: SortOrder
+    classSize?: SortOrder
   }
 
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type ExtracurricularActivityCountOrderByAggregateInput = {
@@ -17002,6 +20142,79 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type CompanyCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    industry?: SortOrder
+    website?: SortOrder
+    description?: SortOrder
+    profileId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    industry?: SortOrder
+    website?: SortOrder
+    description?: SortOrder
+    profileId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    industry?: SortOrder
+    website?: SortOrder
+    description?: SortOrder
+    profileId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyScalarRelationFilter = {
+    is?: CompanyWhereInput
+    isNot?: CompanyWhereInput
+  }
+
+  export type ShortlistCompanyIdStudentIdCompoundUniqueInput = {
+    companyId: string
+    studentId: string
+  }
+
+  export type ShortlistCountOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    studentId?: SortOrder
+    notes?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShortlistMaxOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    studentId?: SortOrder
+    notes?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShortlistMinOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    studentId?: SortOrder
+    notes?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type InstitutionCreateNestedOneWithoutMembersInput = {
     create?: XOR<InstitutionCreateWithoutMembersInput, InstitutionUncheckedCreateWithoutMembersInput>
     connectOrCreate?: InstitutionCreateOrConnectWithoutMembersInput
@@ -17043,6 +20256,19 @@ export namespace Prisma {
     connect?: AccessRequestWhereUniqueInput | AccessRequestWhereUniqueInput[]
   }
 
+  export type CompanyCreateNestedOneWithoutProfileInput = {
+    create?: XOR<CompanyCreateWithoutProfileInput, CompanyUncheckedCreateWithoutProfileInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutProfileInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type ShortlistCreateNestedManyWithoutStudentInput = {
+    create?: XOR<ShortlistCreateWithoutStudentInput, ShortlistUncheckedCreateWithoutStudentInput> | ShortlistCreateWithoutStudentInput[] | ShortlistUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: ShortlistCreateOrConnectWithoutStudentInput | ShortlistCreateOrConnectWithoutStudentInput[]
+    createMany?: ShortlistCreateManyStudentInputEnvelope
+    connect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+  }
+
   export type NinCreateNestedOneWithoutProfileInput = {
     create?: XOR<NinCreateWithoutProfileInput, NinUncheckedCreateWithoutProfileInput>
     connectOrCreate?: NinCreateOrConnectWithoutProfileInput
@@ -17082,6 +20308,19 @@ export namespace Prisma {
     connectOrCreate?: AccessRequestCreateOrConnectWithoutStudentInput | AccessRequestCreateOrConnectWithoutStudentInput[]
     createMany?: AccessRequestCreateManyStudentInputEnvelope
     connect?: AccessRequestWhereUniqueInput | AccessRequestWhereUniqueInput[]
+  }
+
+  export type CompanyUncheckedCreateNestedOneWithoutProfileInput = {
+    create?: XOR<CompanyCreateWithoutProfileInput, CompanyUncheckedCreateWithoutProfileInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutProfileInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type ShortlistUncheckedCreateNestedManyWithoutStudentInput = {
+    create?: XOR<ShortlistCreateWithoutStudentInput, ShortlistUncheckedCreateWithoutStudentInput> | ShortlistCreateWithoutStudentInput[] | ShortlistUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: ShortlistCreateOrConnectWithoutStudentInput | ShortlistCreateOrConnectWithoutStudentInput[]
+    createMany?: ShortlistCreateManyStudentInputEnvelope
+    connect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -17184,6 +20423,30 @@ export namespace Prisma {
     deleteMany?: AccessRequestScalarWhereInput | AccessRequestScalarWhereInput[]
   }
 
+  export type CompanyUpdateOneWithoutProfileNestedInput = {
+    create?: XOR<CompanyCreateWithoutProfileInput, CompanyUncheckedCreateWithoutProfileInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutProfileInput
+    upsert?: CompanyUpsertWithoutProfileInput
+    disconnect?: CompanyWhereInput | boolean
+    delete?: CompanyWhereInput | boolean
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutProfileInput, CompanyUpdateWithoutProfileInput>, CompanyUncheckedUpdateWithoutProfileInput>
+  }
+
+  export type ShortlistUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<ShortlistCreateWithoutStudentInput, ShortlistUncheckedCreateWithoutStudentInput> | ShortlistCreateWithoutStudentInput[] | ShortlistUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: ShortlistCreateOrConnectWithoutStudentInput | ShortlistCreateOrConnectWithoutStudentInput[]
+    upsert?: ShortlistUpsertWithWhereUniqueWithoutStudentInput | ShortlistUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: ShortlistCreateManyStudentInputEnvelope
+    set?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    disconnect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    delete?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    connect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    update?: ShortlistUpdateWithWhereUniqueWithoutStudentInput | ShortlistUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: ShortlistUpdateManyWithWhereWithoutStudentInput | ShortlistUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: ShortlistScalarWhereInput | ShortlistScalarWhereInput[]
+  }
+
   export type NinUpdateOneWithoutProfileNestedInput = {
     create?: XOR<NinCreateWithoutProfileInput, NinUncheckedCreateWithoutProfileInput>
     connectOrCreate?: NinCreateOrConnectWithoutProfileInput
@@ -17264,6 +20527,30 @@ export namespace Prisma {
     deleteMany?: AccessRequestScalarWhereInput | AccessRequestScalarWhereInput[]
   }
 
+  export type CompanyUncheckedUpdateOneWithoutProfileNestedInput = {
+    create?: XOR<CompanyCreateWithoutProfileInput, CompanyUncheckedCreateWithoutProfileInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutProfileInput
+    upsert?: CompanyUpsertWithoutProfileInput
+    disconnect?: CompanyWhereInput | boolean
+    delete?: CompanyWhereInput | boolean
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutProfileInput, CompanyUpdateWithoutProfileInput>, CompanyUncheckedUpdateWithoutProfileInput>
+  }
+
+  export type ShortlistUncheckedUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<ShortlistCreateWithoutStudentInput, ShortlistUncheckedCreateWithoutStudentInput> | ShortlistCreateWithoutStudentInput[] | ShortlistUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: ShortlistCreateOrConnectWithoutStudentInput | ShortlistCreateOrConnectWithoutStudentInput[]
+    upsert?: ShortlistUpsertWithWhereUniqueWithoutStudentInput | ShortlistUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: ShortlistCreateManyStudentInputEnvelope
+    set?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    disconnect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    delete?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    connect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    update?: ShortlistUpdateWithWhereUniqueWithoutStudentInput | ShortlistUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: ShortlistUpdateManyWithWhereWithoutStudentInput | ShortlistUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: ShortlistScalarWhereInput | ShortlistScalarWhereInput[]
+  }
+
   export type ProfileCreateNestedOneWithoutSentRequestsInput = {
     create?: XOR<ProfileCreateWithoutSentRequestsInput, ProfileUncheckedCreateWithoutSentRequestsInput>
     connectOrCreate?: ProfileCreateOrConnectWithoutSentRequestsInput
@@ -17318,6 +20605,14 @@ export namespace Prisma {
     connectOrCreate?: ProfileCreateOrConnectWithoutInstitutionInput | ProfileCreateOrConnectWithoutInstitutionInput[]
     createMany?: ProfileCreateManyInstitutionInputEnvelope
     connect?: ProfileWhereUniqueInput | ProfileWhereUniqueInput[]
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type AcademicRecordUpdateManyWithoutInstitutionNestedInput = {
@@ -17388,7 +20683,7 @@ export namespace Prisma {
     connect?: InstitutionWhereUniqueInput
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
+  export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
@@ -17584,6 +20879,90 @@ export namespace Prisma {
     update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutNinRefInput, ProfileUpdateWithoutNinRefInput>, ProfileUncheckedUpdateWithoutNinRefInput>
   }
 
+  export type ProfileCreateNestedOneWithoutCompanyInput = {
+    create?: XOR<ProfileCreateWithoutCompanyInput, ProfileUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutCompanyInput
+    connect?: ProfileWhereUniqueInput
+  }
+
+  export type ShortlistCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<ShortlistCreateWithoutCompanyInput, ShortlistUncheckedCreateWithoutCompanyInput> | ShortlistCreateWithoutCompanyInput[] | ShortlistUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: ShortlistCreateOrConnectWithoutCompanyInput | ShortlistCreateOrConnectWithoutCompanyInput[]
+    createMany?: ShortlistCreateManyCompanyInputEnvelope
+    connect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+  }
+
+  export type ShortlistUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<ShortlistCreateWithoutCompanyInput, ShortlistUncheckedCreateWithoutCompanyInput> | ShortlistCreateWithoutCompanyInput[] | ShortlistUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: ShortlistCreateOrConnectWithoutCompanyInput | ShortlistCreateOrConnectWithoutCompanyInput[]
+    createMany?: ShortlistCreateManyCompanyInputEnvelope
+    connect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+  }
+
+  export type ProfileUpdateOneRequiredWithoutCompanyNestedInput = {
+    create?: XOR<ProfileCreateWithoutCompanyInput, ProfileUncheckedCreateWithoutCompanyInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutCompanyInput
+    upsert?: ProfileUpsertWithoutCompanyInput
+    connect?: ProfileWhereUniqueInput
+    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutCompanyInput, ProfileUpdateWithoutCompanyInput>, ProfileUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type ShortlistUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<ShortlistCreateWithoutCompanyInput, ShortlistUncheckedCreateWithoutCompanyInput> | ShortlistCreateWithoutCompanyInput[] | ShortlistUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: ShortlistCreateOrConnectWithoutCompanyInput | ShortlistCreateOrConnectWithoutCompanyInput[]
+    upsert?: ShortlistUpsertWithWhereUniqueWithoutCompanyInput | ShortlistUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: ShortlistCreateManyCompanyInputEnvelope
+    set?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    disconnect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    delete?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    connect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    update?: ShortlistUpdateWithWhereUniqueWithoutCompanyInput | ShortlistUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: ShortlistUpdateManyWithWhereWithoutCompanyInput | ShortlistUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: ShortlistScalarWhereInput | ShortlistScalarWhereInput[]
+  }
+
+  export type ShortlistUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<ShortlistCreateWithoutCompanyInput, ShortlistUncheckedCreateWithoutCompanyInput> | ShortlistCreateWithoutCompanyInput[] | ShortlistUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: ShortlistCreateOrConnectWithoutCompanyInput | ShortlistCreateOrConnectWithoutCompanyInput[]
+    upsert?: ShortlistUpsertWithWhereUniqueWithoutCompanyInput | ShortlistUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: ShortlistCreateManyCompanyInputEnvelope
+    set?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    disconnect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    delete?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    connect?: ShortlistWhereUniqueInput | ShortlistWhereUniqueInput[]
+    update?: ShortlistUpdateWithWhereUniqueWithoutCompanyInput | ShortlistUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: ShortlistUpdateManyWithWhereWithoutCompanyInput | ShortlistUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: ShortlistScalarWhereInput | ShortlistScalarWhereInput[]
+  }
+
+  export type CompanyCreateNestedOneWithoutShortlistsInput = {
+    create?: XOR<CompanyCreateWithoutShortlistsInput, CompanyUncheckedCreateWithoutShortlistsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutShortlistsInput
+    connect?: CompanyWhereUniqueInput
+  }
+
+  export type ProfileCreateNestedOneWithoutShortlistedByInput = {
+    create?: XOR<ProfileCreateWithoutShortlistedByInput, ProfileUncheckedCreateWithoutShortlistedByInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutShortlistedByInput
+    connect?: ProfileWhereUniqueInput
+  }
+
+  export type CompanyUpdateOneRequiredWithoutShortlistsNestedInput = {
+    create?: XOR<CompanyCreateWithoutShortlistsInput, CompanyUncheckedCreateWithoutShortlistsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutShortlistsInput
+    upsert?: CompanyUpsertWithoutShortlistsInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutShortlistsInput, CompanyUpdateWithoutShortlistsInput>, CompanyUncheckedUpdateWithoutShortlistsInput>
+  }
+
+  export type ProfileUpdateOneRequiredWithoutShortlistedByNestedInput = {
+    create?: XOR<ProfileCreateWithoutShortlistedByInput, ProfileUncheckedCreateWithoutShortlistedByInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutShortlistedByInput
+    upsert?: ProfileUpsertWithoutShortlistedByInput
+    connect?: ProfileWhereUniqueInput
+    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutShortlistedByInput, ProfileUpdateWithoutShortlistedByInput>, ProfileUncheckedUpdateWithoutShortlistedByInput>
+  }
+
   export type NestedUuidFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -17724,6 +21103,29 @@ export namespace Prisma {
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -17783,12 +21185,29 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type InstitutionCreateWithoutMembersInput = {
     id?: string
     name: string
     type: string
     address?: string | null
     state?: string | null
+    cgpaScale?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordCreateNestedManyWithoutInstitutionInput
@@ -17800,6 +21219,7 @@ export namespace Prisma {
     type: string
     address?: string | null
     state?: string | null
+    cgpaScale?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutInstitutionInput
@@ -17819,6 +21239,8 @@ export namespace Prisma {
     code?: string | null
     grade?: string | null
     score?: number | null
+    classRank?: number | null
+    classSize?: number | null
     isVerified?: boolean
     verifiedBy?: string | null
     createdAt?: Date | string
@@ -17836,6 +21258,8 @@ export namespace Prisma {
     code?: string | null
     grade?: string | null
     score?: number | null
+    classRank?: number | null
+    classSize?: number | null
     isVerified?: boolean
     verifiedBy?: string | null
     createdAt?: Date | string
@@ -17970,6 +21394,61 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CompanyCreateWithoutProfileInput = {
+    id?: string
+    name: string
+    industry?: string | null
+    website?: string | null
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    shortlists?: ShortlistCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutProfileInput = {
+    id?: string
+    name: string
+    industry?: string | null
+    website?: string | null
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    shortlists?: ShortlistUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutProfileInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutProfileInput, CompanyUncheckedCreateWithoutProfileInput>
+  }
+
+  export type ShortlistCreateWithoutStudentInput = {
+    id?: string
+    notes?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutShortlistsInput
+  }
+
+  export type ShortlistUncheckedCreateWithoutStudentInput = {
+    id?: string
+    companyId: string
+    notes?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShortlistCreateOrConnectWithoutStudentInput = {
+    where: ShortlistWhereUniqueInput
+    create: XOR<ShortlistCreateWithoutStudentInput, ShortlistUncheckedCreateWithoutStudentInput>
+  }
+
+  export type ShortlistCreateManyStudentInputEnvelope = {
+    data: ShortlistCreateManyStudentInput | ShortlistCreateManyStudentInput[]
+    skipDuplicates?: boolean
+  }
+
   export type NinCreateWithoutProfileInput = {
     nin: string
     fullName: string
@@ -18016,6 +21495,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    cgpaScale?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUpdateManyWithoutInstitutionNestedInput
@@ -18027,6 +21507,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    cgpaScale?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUncheckedUpdateManyWithoutInstitutionNestedInput
@@ -18062,6 +21543,8 @@ export namespace Prisma {
     code?: StringNullableFilter<"AcademicRecord"> | string | null
     grade?: StringNullableFilter<"AcademicRecord"> | string | null
     score?: FloatNullableFilter<"AcademicRecord"> | number | null
+    classRank?: IntNullableFilter<"AcademicRecord"> | number | null
+    classSize?: IntNullableFilter<"AcademicRecord"> | number | null
     isVerified?: BoolFilter<"AcademicRecord"> | boolean
     verifiedBy?: StringNullableFilter<"AcademicRecord"> | string | null
     createdAt?: DateTimeFilter<"AcademicRecord"> | Date | string
@@ -18175,6 +21658,68 @@ export namespace Prisma {
     data: XOR<AccessRequestUpdateManyMutationInput, AccessRequestUncheckedUpdateManyWithoutStudentInput>
   }
 
+  export type CompanyUpsertWithoutProfileInput = {
+    update: XOR<CompanyUpdateWithoutProfileInput, CompanyUncheckedUpdateWithoutProfileInput>
+    create: XOR<CompanyCreateWithoutProfileInput, CompanyUncheckedCreateWithoutProfileInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutProfileInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutProfileInput, CompanyUncheckedUpdateWithoutProfileInput>
+  }
+
+  export type CompanyUpdateWithoutProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    shortlists?: ShortlistUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateWithoutProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    shortlists?: ShortlistUncheckedUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type ShortlistUpsertWithWhereUniqueWithoutStudentInput = {
+    where: ShortlistWhereUniqueInput
+    update: XOR<ShortlistUpdateWithoutStudentInput, ShortlistUncheckedUpdateWithoutStudentInput>
+    create: XOR<ShortlistCreateWithoutStudentInput, ShortlistUncheckedCreateWithoutStudentInput>
+  }
+
+  export type ShortlistUpdateWithWhereUniqueWithoutStudentInput = {
+    where: ShortlistWhereUniqueInput
+    data: XOR<ShortlistUpdateWithoutStudentInput, ShortlistUncheckedUpdateWithoutStudentInput>
+  }
+
+  export type ShortlistUpdateManyWithWhereWithoutStudentInput = {
+    where: ShortlistScalarWhereInput
+    data: XOR<ShortlistUpdateManyMutationInput, ShortlistUncheckedUpdateManyWithoutStudentInput>
+  }
+
+  export type ShortlistScalarWhereInput = {
+    AND?: ShortlistScalarWhereInput | ShortlistScalarWhereInput[]
+    OR?: ShortlistScalarWhereInput[]
+    NOT?: ShortlistScalarWhereInput | ShortlistScalarWhereInput[]
+    id?: StringFilter<"Shortlist"> | string
+    companyId?: StringFilter<"Shortlist"> | string
+    studentId?: UuidFilter<"Shortlist"> | string
+    notes?: StringNullableFilter<"Shortlist"> | string | null
+    status?: StringFilter<"Shortlist"> | string
+    createdAt?: DateTimeFilter<"Shortlist"> | Date | string
+    updatedAt?: DateTimeFilter<"Shortlist"> | Date | string
+  }
+
   export type NinUpsertWithoutProfileInput = {
     update: XOR<NinUpdateWithoutProfileInput, NinUncheckedUpdateWithoutProfileInput>
     create: XOR<NinCreateWithoutProfileInput, NinUncheckedCreateWithoutProfileInput>
@@ -18223,6 +21768,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     institution?: InstitutionCreateNestedOneWithoutMembersInput
@@ -18230,6 +21777,8 @@ export namespace Prisma {
     extracurriculars?: ExtracurricularActivityCreateNestedManyWithoutProfileInput
     eventParticipations?: EventParticipationCreateNestedManyWithoutProfileInput
     receivedRequests?: AccessRequestCreateNestedManyWithoutStudentInput
+    company?: CompanyCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistCreateNestedManyWithoutStudentInput
     ninRef?: NinCreateNestedOneWithoutProfileInput
   }
 
@@ -18248,12 +21797,16 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutProfileInput
     extracurriculars?: ExtracurricularActivityUncheckedCreateNestedManyWithoutProfileInput
     eventParticipations?: EventParticipationUncheckedCreateNestedManyWithoutProfileInput
     receivedRequests?: AccessRequestUncheckedCreateNestedManyWithoutStudentInput
+    company?: CompanyUncheckedCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type ProfileCreateOrConnectWithoutSentRequestsInput = {
@@ -18274,6 +21827,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     institution?: InstitutionCreateNestedOneWithoutMembersInput
@@ -18281,6 +21836,8 @@ export namespace Prisma {
     extracurriculars?: ExtracurricularActivityCreateNestedManyWithoutProfileInput
     eventParticipations?: EventParticipationCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestCreateNestedManyWithoutRequesterInput
+    company?: CompanyCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistCreateNestedManyWithoutStudentInput
     ninRef?: NinCreateNestedOneWithoutProfileInput
   }
 
@@ -18299,12 +21856,16 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutProfileInput
     extracurriculars?: ExtracurricularActivityUncheckedCreateNestedManyWithoutProfileInput
     eventParticipations?: EventParticipationUncheckedCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestUncheckedCreateNestedManyWithoutRequesterInput
+    company?: CompanyUncheckedCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type ProfileCreateOrConnectWithoutReceivedRequestsInput = {
@@ -18336,6 +21897,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     institution?: InstitutionUpdateOneWithoutMembersNestedInput
@@ -18343,6 +21906,8 @@ export namespace Prisma {
     extracurriculars?: ExtracurricularActivityUpdateManyWithoutProfileNestedInput
     eventParticipations?: EventParticipationUpdateManyWithoutProfileNestedInput
     receivedRequests?: AccessRequestUpdateManyWithoutStudentNestedInput
+    company?: CompanyUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUpdateManyWithoutStudentNestedInput
     ninRef?: NinUpdateOneWithoutProfileNestedInput
   }
 
@@ -18361,12 +21926,16 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
     institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUncheckedUpdateManyWithoutProfileNestedInput
     extracurriculars?: ExtracurricularActivityUncheckedUpdateManyWithoutProfileNestedInput
     eventParticipations?: EventParticipationUncheckedUpdateManyWithoutProfileNestedInput
     receivedRequests?: AccessRequestUncheckedUpdateManyWithoutStudentNestedInput
+    company?: CompanyUncheckedUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type ProfileUpsertWithoutReceivedRequestsInput = {
@@ -18393,6 +21962,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     institution?: InstitutionUpdateOneWithoutMembersNestedInput
@@ -18400,6 +21971,8 @@ export namespace Prisma {
     extracurriculars?: ExtracurricularActivityUpdateManyWithoutProfileNestedInput
     eventParticipations?: EventParticipationUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUpdateManyWithoutRequesterNestedInput
+    company?: CompanyUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUpdateManyWithoutStudentNestedInput
     ninRef?: NinUpdateOneWithoutProfileNestedInput
   }
 
@@ -18418,12 +21991,16 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
     institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUncheckedUpdateManyWithoutProfileNestedInput
     extracurriculars?: ExtracurricularActivityUncheckedUpdateManyWithoutProfileNestedInput
     eventParticipations?: EventParticipationUncheckedUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUncheckedUpdateManyWithoutRequesterNestedInput
+    company?: CompanyUncheckedUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type AcademicRecordCreateWithoutInstitutionInput = {
@@ -18435,6 +22012,8 @@ export namespace Prisma {
     code?: string | null
     grade?: string | null
     score?: number | null
+    classRank?: number | null
+    classSize?: number | null
     isVerified?: boolean
     verifiedBy?: string | null
     createdAt?: Date | string
@@ -18452,6 +22031,8 @@ export namespace Prisma {
     code?: string | null
     grade?: string | null
     score?: number | null
+    classRank?: number | null
+    classSize?: number | null
     isVerified?: boolean
     verifiedBy?: string | null
     createdAt?: Date | string
@@ -18481,6 +22062,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordCreateNestedManyWithoutProfileInput
@@ -18488,6 +22071,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestCreateNestedManyWithoutStudentInput
+    company?: CompanyCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistCreateNestedManyWithoutStudentInput
     ninRef?: NinCreateNestedOneWithoutProfileInput
   }
 
@@ -18505,6 +22090,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutProfileInput
@@ -18512,6 +22099,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUncheckedCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestUncheckedCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestUncheckedCreateNestedManyWithoutStudentInput
+    company?: CompanyUncheckedCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type ProfileCreateOrConnectWithoutInstitutionInput = {
@@ -18574,6 +22163,8 @@ export namespace Prisma {
     isVerified?: BoolFilter<"Profile"> | boolean
     isOpenToRecruiters?: BoolFilter<"Profile"> | boolean
     institutionId?: StringNullableFilter<"Profile"> | string | null
+    permissions?: JsonNullableFilter<"Profile">
+    createdBy?: StringNullableFilter<"Profile"> | string | null
     createdAt?: DateTimeFilter<"Profile"> | Date | string
     updatedAt?: DateTimeFilter<"Profile"> | Date | string
   }
@@ -18591,6 +22182,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     institution?: InstitutionCreateNestedOneWithoutMembersInput
@@ -18598,6 +22191,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestCreateNestedManyWithoutStudentInput
+    company?: CompanyCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistCreateNestedManyWithoutStudentInput
     ninRef?: NinCreateNestedOneWithoutProfileInput
   }
 
@@ -18616,12 +22211,16 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     extracurriculars?: ExtracurricularActivityUncheckedCreateNestedManyWithoutProfileInput
     eventParticipations?: EventParticipationUncheckedCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestUncheckedCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestUncheckedCreateNestedManyWithoutStudentInput
+    company?: CompanyUncheckedCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type ProfileCreateOrConnectWithoutAcademicRecordsInput = {
@@ -18635,6 +22234,7 @@ export namespace Prisma {
     type: string
     address?: string | null
     state?: string | null
+    cgpaScale?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     members?: ProfileCreateNestedManyWithoutInstitutionInput
@@ -18646,6 +22246,7 @@ export namespace Prisma {
     type: string
     address?: string | null
     state?: string | null
+    cgpaScale?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     members?: ProfileUncheckedCreateNestedManyWithoutInstitutionInput
@@ -18680,6 +22281,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     institution?: InstitutionUpdateOneWithoutMembersNestedInput
@@ -18687,6 +22290,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUpdateManyWithoutStudentNestedInput
+    company?: CompanyUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUpdateManyWithoutStudentNestedInput
     ninRef?: NinUpdateOneWithoutProfileNestedInput
   }
 
@@ -18705,12 +22310,16 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
     institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     extracurriculars?: ExtracurricularActivityUncheckedUpdateManyWithoutProfileNestedInput
     eventParticipations?: EventParticipationUncheckedUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUncheckedUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUncheckedUpdateManyWithoutStudentNestedInput
+    company?: CompanyUncheckedUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type InstitutionUpsertWithoutAcademicRecordsInput = {
@@ -18730,6 +22339,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    cgpaScale?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     members?: ProfileUpdateManyWithoutInstitutionNestedInput
@@ -18741,6 +22351,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     address?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    cgpaScale?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     members?: ProfileUncheckedUpdateManyWithoutInstitutionNestedInput
@@ -18759,6 +22370,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     institution?: InstitutionCreateNestedOneWithoutMembersInput
@@ -18766,6 +22379,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestCreateNestedManyWithoutStudentInput
+    company?: CompanyCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistCreateNestedManyWithoutStudentInput
     ninRef?: NinCreateNestedOneWithoutProfileInput
   }
 
@@ -18784,12 +22399,16 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutProfileInput
     eventParticipations?: EventParticipationUncheckedCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestUncheckedCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestUncheckedCreateNestedManyWithoutStudentInput
+    company?: CompanyUncheckedCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type ProfileCreateOrConnectWithoutExtracurricularsInput = {
@@ -18821,6 +22440,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     institution?: InstitutionUpdateOneWithoutMembersNestedInput
@@ -18828,6 +22449,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUpdateManyWithoutStudentNestedInput
+    company?: CompanyUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUpdateManyWithoutStudentNestedInput
     ninRef?: NinUpdateOneWithoutProfileNestedInput
   }
 
@@ -18846,12 +22469,16 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
     institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUncheckedUpdateManyWithoutProfileNestedInput
     eventParticipations?: EventParticipationUncheckedUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUncheckedUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUncheckedUpdateManyWithoutStudentNestedInput
+    company?: CompanyUncheckedUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type EventCreateWithoutOrganizationInput = {
@@ -19051,6 +22678,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     institution?: InstitutionCreateNestedOneWithoutMembersInput
@@ -19058,6 +22687,8 @@ export namespace Prisma {
     extracurriculars?: ExtracurricularActivityCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestCreateNestedManyWithoutStudentInput
+    company?: CompanyCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistCreateNestedManyWithoutStudentInput
     ninRef?: NinCreateNestedOneWithoutProfileInput
   }
 
@@ -19076,12 +22707,16 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutProfileInput
     extracurriculars?: ExtracurricularActivityUncheckedCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestUncheckedCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestUncheckedCreateNestedManyWithoutStudentInput
+    company?: CompanyUncheckedCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type ProfileCreateOrConnectWithoutEventParticipationsInput = {
@@ -19148,6 +22783,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     institution?: InstitutionUpdateOneWithoutMembersNestedInput
@@ -19155,6 +22792,8 @@ export namespace Prisma {
     extracurriculars?: ExtracurricularActivityUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUpdateManyWithoutStudentNestedInput
+    company?: CompanyUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUpdateManyWithoutStudentNestedInput
     ninRef?: NinUpdateOneWithoutProfileNestedInput
   }
 
@@ -19173,12 +22812,16 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
     institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUncheckedUpdateManyWithoutProfileNestedInput
     extracurriculars?: ExtracurricularActivityUncheckedUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUncheckedUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUncheckedUpdateManyWithoutStudentNestedInput
+    company?: CompanyUncheckedUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type ProfileCreateWithoutNinRefInput = {
@@ -19194,6 +22837,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     institution?: InstitutionCreateNestedOneWithoutMembersInput
@@ -19202,6 +22847,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestCreateNestedManyWithoutStudentInput
+    company?: CompanyCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistCreateNestedManyWithoutStudentInput
   }
 
   export type ProfileUncheckedCreateWithoutNinRefInput = {
@@ -19218,6 +22865,8 @@ export namespace Prisma {
     isVerified?: boolean
     isOpenToRecruiters?: boolean
     institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutProfileInput
@@ -19225,6 +22874,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUncheckedCreateNestedManyWithoutProfileInput
     sentRequests?: AccessRequestUncheckedCreateNestedManyWithoutRequesterInput
     receivedRequests?: AccessRequestUncheckedCreateNestedManyWithoutStudentInput
+    company?: CompanyUncheckedCreateNestedOneWithoutProfileInput
+    shortlistedBy?: ShortlistUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type ProfileCreateOrConnectWithoutNinRefInput = {
@@ -19256,6 +22907,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     institution?: InstitutionUpdateOneWithoutMembersNestedInput
@@ -19264,6 +22917,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUpdateManyWithoutStudentNestedInput
+    company?: CompanyUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUpdateManyWithoutStudentNestedInput
   }
 
   export type ProfileUncheckedUpdateWithoutNinRefInput = {
@@ -19280,6 +22935,8 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
     institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUncheckedUpdateManyWithoutProfileNestedInput
@@ -19287,6 +22944,360 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUncheckedUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUncheckedUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUncheckedUpdateManyWithoutStudentNestedInput
+    company?: CompanyUncheckedUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type ProfileCreateWithoutCompanyInput = {
+    id?: string
+    role?: string | null
+    fullName?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    stateOfOrigin?: string | null
+    phoneNumber?: string | null
+    email?: string | null
+    password?: string | null
+    avatar?: string | null
+    isVerified?: boolean
+    isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    institution?: InstitutionCreateNestedOneWithoutMembersInput
+    academicRecords?: AcademicRecordCreateNestedManyWithoutProfileInput
+    extracurriculars?: ExtracurricularActivityCreateNestedManyWithoutProfileInput
+    eventParticipations?: EventParticipationCreateNestedManyWithoutProfileInput
+    sentRequests?: AccessRequestCreateNestedManyWithoutRequesterInput
+    receivedRequests?: AccessRequestCreateNestedManyWithoutStudentInput
+    shortlistedBy?: ShortlistCreateNestedManyWithoutStudentInput
+    ninRef?: NinCreateNestedOneWithoutProfileInput
+  }
+
+  export type ProfileUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    role?: string | null
+    nin?: string | null
+    fullName?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    stateOfOrigin?: string | null
+    phoneNumber?: string | null
+    email?: string | null
+    password?: string | null
+    avatar?: string | null
+    isVerified?: boolean
+    isOpenToRecruiters?: boolean
+    institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutProfileInput
+    extracurriculars?: ExtracurricularActivityUncheckedCreateNestedManyWithoutProfileInput
+    eventParticipations?: EventParticipationUncheckedCreateNestedManyWithoutProfileInput
+    sentRequests?: AccessRequestUncheckedCreateNestedManyWithoutRequesterInput
+    receivedRequests?: AccessRequestUncheckedCreateNestedManyWithoutStudentInput
+    shortlistedBy?: ShortlistUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type ProfileCreateOrConnectWithoutCompanyInput = {
+    where: ProfileWhereUniqueInput
+    create: XOR<ProfileCreateWithoutCompanyInput, ProfileUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type ShortlistCreateWithoutCompanyInput = {
+    id?: string
+    notes?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    student: ProfileCreateNestedOneWithoutShortlistedByInput
+  }
+
+  export type ShortlistUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    studentId: string
+    notes?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShortlistCreateOrConnectWithoutCompanyInput = {
+    where: ShortlistWhereUniqueInput
+    create: XOR<ShortlistCreateWithoutCompanyInput, ShortlistUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type ShortlistCreateManyCompanyInputEnvelope = {
+    data: ShortlistCreateManyCompanyInput | ShortlistCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProfileUpsertWithoutCompanyInput = {
+    update: XOR<ProfileUpdateWithoutCompanyInput, ProfileUncheckedUpdateWithoutCompanyInput>
+    create: XOR<ProfileCreateWithoutCompanyInput, ProfileUncheckedCreateWithoutCompanyInput>
+    where?: ProfileWhereInput
+  }
+
+  export type ProfileUpdateToOneWithWhereWithoutCompanyInput = {
+    where?: ProfileWhereInput
+    data: XOR<ProfileUpdateWithoutCompanyInput, ProfileUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type ProfileUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    stateOfOrigin?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    institution?: InstitutionUpdateOneWithoutMembersNestedInput
+    academicRecords?: AcademicRecordUpdateManyWithoutProfileNestedInput
+    extracurriculars?: ExtracurricularActivityUpdateManyWithoutProfileNestedInput
+    eventParticipations?: EventParticipationUpdateManyWithoutProfileNestedInput
+    sentRequests?: AccessRequestUpdateManyWithoutRequesterNestedInput
+    receivedRequests?: AccessRequestUpdateManyWithoutStudentNestedInput
+    shortlistedBy?: ShortlistUpdateManyWithoutStudentNestedInput
+    ninRef?: NinUpdateOneWithoutProfileNestedInput
+  }
+
+  export type ProfileUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    nin?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    stateOfOrigin?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    academicRecords?: AcademicRecordUncheckedUpdateManyWithoutProfileNestedInput
+    extracurriculars?: ExtracurricularActivityUncheckedUpdateManyWithoutProfileNestedInput
+    eventParticipations?: EventParticipationUncheckedUpdateManyWithoutProfileNestedInput
+    sentRequests?: AccessRequestUncheckedUpdateManyWithoutRequesterNestedInput
+    receivedRequests?: AccessRequestUncheckedUpdateManyWithoutStudentNestedInput
+    shortlistedBy?: ShortlistUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type ShortlistUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: ShortlistWhereUniqueInput
+    update: XOR<ShortlistUpdateWithoutCompanyInput, ShortlistUncheckedUpdateWithoutCompanyInput>
+    create: XOR<ShortlistCreateWithoutCompanyInput, ShortlistUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type ShortlistUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: ShortlistWhereUniqueInput
+    data: XOR<ShortlistUpdateWithoutCompanyInput, ShortlistUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type ShortlistUpdateManyWithWhereWithoutCompanyInput = {
+    where: ShortlistScalarWhereInput
+    data: XOR<ShortlistUpdateManyMutationInput, ShortlistUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type CompanyCreateWithoutShortlistsInput = {
+    id?: string
+    name: string
+    industry?: string | null
+    website?: string | null
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profile: ProfileCreateNestedOneWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutShortlistsInput = {
+    id?: string
+    name: string
+    industry?: string | null
+    website?: string | null
+    description?: string | null
+    profileId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyCreateOrConnectWithoutShortlistsInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutShortlistsInput, CompanyUncheckedCreateWithoutShortlistsInput>
+  }
+
+  export type ProfileCreateWithoutShortlistedByInput = {
+    id?: string
+    role?: string | null
+    fullName?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    stateOfOrigin?: string | null
+    phoneNumber?: string | null
+    email?: string | null
+    password?: string | null
+    avatar?: string | null
+    isVerified?: boolean
+    isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    institution?: InstitutionCreateNestedOneWithoutMembersInput
+    academicRecords?: AcademicRecordCreateNestedManyWithoutProfileInput
+    extracurriculars?: ExtracurricularActivityCreateNestedManyWithoutProfileInput
+    eventParticipations?: EventParticipationCreateNestedManyWithoutProfileInput
+    sentRequests?: AccessRequestCreateNestedManyWithoutRequesterInput
+    receivedRequests?: AccessRequestCreateNestedManyWithoutStudentInput
+    company?: CompanyCreateNestedOneWithoutProfileInput
+    ninRef?: NinCreateNestedOneWithoutProfileInput
+  }
+
+  export type ProfileUncheckedCreateWithoutShortlistedByInput = {
+    id?: string
+    role?: string | null
+    nin?: string | null
+    fullName?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    stateOfOrigin?: string | null
+    phoneNumber?: string | null
+    email?: string | null
+    password?: string | null
+    avatar?: string | null
+    isVerified?: boolean
+    isOpenToRecruiters?: boolean
+    institutionId?: string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    academicRecords?: AcademicRecordUncheckedCreateNestedManyWithoutProfileInput
+    extracurriculars?: ExtracurricularActivityUncheckedCreateNestedManyWithoutProfileInput
+    eventParticipations?: EventParticipationUncheckedCreateNestedManyWithoutProfileInput
+    sentRequests?: AccessRequestUncheckedCreateNestedManyWithoutRequesterInput
+    receivedRequests?: AccessRequestUncheckedCreateNestedManyWithoutStudentInput
+    company?: CompanyUncheckedCreateNestedOneWithoutProfileInput
+  }
+
+  export type ProfileCreateOrConnectWithoutShortlistedByInput = {
+    where: ProfileWhereUniqueInput
+    create: XOR<ProfileCreateWithoutShortlistedByInput, ProfileUncheckedCreateWithoutShortlistedByInput>
+  }
+
+  export type CompanyUpsertWithoutShortlistsInput = {
+    update: XOR<CompanyUpdateWithoutShortlistsInput, CompanyUncheckedUpdateWithoutShortlistsInput>
+    create: XOR<CompanyCreateWithoutShortlistsInput, CompanyUncheckedCreateWithoutShortlistsInput>
+    where?: CompanyWhereInput
+  }
+
+  export type CompanyUpdateToOneWithWhereWithoutShortlistsInput = {
+    where?: CompanyWhereInput
+    data: XOR<CompanyUpdateWithoutShortlistsInput, CompanyUncheckedUpdateWithoutShortlistsInput>
+  }
+
+  export type CompanyUpdateWithoutShortlistsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profile?: ProfileUpdateOneRequiredWithoutCompanyNestedInput
+  }
+
+  export type CompanyUncheckedUpdateWithoutShortlistsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    profileId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProfileUpsertWithoutShortlistedByInput = {
+    update: XOR<ProfileUpdateWithoutShortlistedByInput, ProfileUncheckedUpdateWithoutShortlistedByInput>
+    create: XOR<ProfileCreateWithoutShortlistedByInput, ProfileUncheckedCreateWithoutShortlistedByInput>
+    where?: ProfileWhereInput
+  }
+
+  export type ProfileUpdateToOneWithWhereWithoutShortlistedByInput = {
+    where?: ProfileWhereInput
+    data: XOR<ProfileUpdateWithoutShortlistedByInput, ProfileUncheckedUpdateWithoutShortlistedByInput>
+  }
+
+  export type ProfileUpdateWithoutShortlistedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    stateOfOrigin?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    institution?: InstitutionUpdateOneWithoutMembersNestedInput
+    academicRecords?: AcademicRecordUpdateManyWithoutProfileNestedInput
+    extracurriculars?: ExtracurricularActivityUpdateManyWithoutProfileNestedInput
+    eventParticipations?: EventParticipationUpdateManyWithoutProfileNestedInput
+    sentRequests?: AccessRequestUpdateManyWithoutRequesterNestedInput
+    receivedRequests?: AccessRequestUpdateManyWithoutStudentNestedInput
+    company?: CompanyUpdateOneWithoutProfileNestedInput
+    ninRef?: NinUpdateOneWithoutProfileNestedInput
+  }
+
+  export type ProfileUncheckedUpdateWithoutShortlistedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    nin?: NullableStringFieldUpdateOperationsInput | string | null
+    fullName?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    stateOfOrigin?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    institutionId?: NullableStringFieldUpdateOperationsInput | string | null
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    academicRecords?: AcademicRecordUncheckedUpdateManyWithoutProfileNestedInput
+    extracurriculars?: ExtracurricularActivityUncheckedUpdateManyWithoutProfileNestedInput
+    eventParticipations?: EventParticipationUncheckedUpdateManyWithoutProfileNestedInput
+    sentRequests?: AccessRequestUncheckedUpdateManyWithoutRequesterNestedInput
+    receivedRequests?: AccessRequestUncheckedUpdateManyWithoutStudentNestedInput
+    company?: CompanyUncheckedUpdateOneWithoutProfileNestedInput
   }
 
   export type AcademicRecordCreateManyProfileInput = {
@@ -19299,6 +23310,8 @@ export namespace Prisma {
     code?: string | null
     grade?: string | null
     score?: number | null
+    classRank?: number | null
+    classSize?: number | null
     isVerified?: boolean
     verifiedBy?: string | null
     createdAt?: Date | string
@@ -19344,6 +23357,15 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ShortlistCreateManyStudentInput = {
+    id?: string
+    companyId: string
+    notes?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type AcademicRecordUpdateWithoutProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
     session?: StringFieldUpdateOperationsInput | string
@@ -19353,6 +23375,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19370,6 +23394,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19386,6 +23412,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19509,6 +23537,33 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ShortlistUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutShortlistsNestedInput
+  }
+
+  export type ShortlistUncheckedUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShortlistUncheckedUpdateManyWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type AcademicRecordCreateManyInstitutionInput = {
     id?: string
     profileId: string
@@ -19519,6 +23574,8 @@ export namespace Prisma {
     code?: string | null
     grade?: string | null
     score?: number | null
+    classRank?: number | null
+    classSize?: number | null
     isVerified?: boolean
     verifiedBy?: string | null
     createdAt?: Date | string
@@ -19539,6 +23596,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isOpenToRecruiters?: boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19552,6 +23611,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19569,6 +23630,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19585,6 +23648,8 @@ export namespace Prisma {
     code?: NullableStringFieldUpdateOperationsInput | string | null
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
+    classRank?: NullableIntFieldUpdateOperationsInput | number | null
+    classSize?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19604,6 +23669,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUpdateManyWithoutProfileNestedInput
@@ -19611,6 +23678,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUpdateManyWithoutStudentNestedInput
+    company?: CompanyUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUpdateManyWithoutStudentNestedInput
     ninRef?: NinUpdateOneWithoutProfileNestedInput
   }
 
@@ -19628,6 +23697,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     academicRecords?: AcademicRecordUncheckedUpdateManyWithoutProfileNestedInput
@@ -19635,6 +23706,8 @@ export namespace Prisma {
     eventParticipations?: EventParticipationUncheckedUpdateManyWithoutProfileNestedInput
     sentRequests?: AccessRequestUncheckedUpdateManyWithoutRequesterNestedInput
     receivedRequests?: AccessRequestUncheckedUpdateManyWithoutStudentNestedInput
+    company?: CompanyUncheckedUpdateOneWithoutProfileNestedInput
+    shortlistedBy?: ShortlistUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type ProfileUncheckedUpdateManyWithoutInstitutionInput = {
@@ -19651,6 +23724,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isOpenToRecruiters?: BoolFieldUpdateOperationsInput | boolean
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19737,6 +23812,42 @@ export namespace Prisma {
     position?: NullableStringFieldUpdateOperationsInput | string | null
     score?: NullableFloatFieldUpdateOperationsInput | number | null
     award?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShortlistCreateManyCompanyInput = {
+    id?: string
+    studentId: string
+    notes?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShortlistUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    student?: ProfileUpdateOneRequiredWithoutShortlistedByNestedInput
+  }
+
+  export type ShortlistUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShortlistUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
