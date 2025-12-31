@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
@@ -19,11 +20,24 @@ import { RecruitmentModule } from './recruitment/recruitment.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),
       serveRoot: '/uploads',
     }),
-    PrismaModule, StudentModule, InstitutionModule, AcademicRecordModule, ExtracurricularModule, RankingModule, AuthModule, ProfileModule, UserModule, AccessRequestModule, EventModule, AdminModule, RecruitmentModule
+    PrismaModule,
+    StudentModule,
+    InstitutionModule,
+    AcademicRecordModule,
+    ExtracurricularModule,
+    RankingModule,
+    AuthModule,
+    ProfileModule,
+    UserModule,
+    AccessRequestModule,
+    EventModule,
+    AdminModule,
+    RecruitmentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

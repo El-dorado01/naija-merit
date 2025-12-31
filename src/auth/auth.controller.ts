@@ -1,4 +1,14 @@
-import { Controller, Post, Body, UseGuards, Request, Headers } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Get,
+  Body,
+  UseGuards,
+  Request,
+  Headers,
+  Query,
+  Delete,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 
@@ -7,12 +17,20 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  register(@Body() dto: { email: string; password?: string; role: string; fullName?: string }) {
+  register(
+    @Body()
+    dto: {
+      email: string;
+      password?: string;
+      role: string;
+      fullName?: string;
+    },
+  ) {
     return this.authService.register(dto);
   }
 
   @Post('login')
-  login(@Body() dto: { email: string; password?: string }) {
+  login(@Body() dto: { email: string; password: string }) {
     return this.authService.login(dto);
   }
 
@@ -32,10 +50,30 @@ export class AuthController {
     return this.authService.resetPassword(dto.token, dto.newPassword);
   }
 
-  @Post('logout')
+  @Delete('logout')
   logout(@Headers('authorization') authHeader: string) {
     if (!authHeader) return { message: 'Already logged out' };
     const token = authHeader.split(' ')[1];
     return this.authService.logout(token);
+  }
+
+  @Post('send-otp')
+  sendOtp(@Body('email') email: string) {
+    return this.authService.generateAndSendOtp(email);
+  }
+
+  @Post('verify-otp')
+  verifyOtp(
+    @Body('email') email: string,
+    @Body('code') code: string,
+    @Headers('authorization') authHeader?: string,
+  ) {
+    const token = authHeader?.split(' ')[1];
+    return this.authService.verifyOtp(email, code, token);
+  }
+
+  @Get('verify-email')
+  verifyEmail(@Query('token') token: string) {
+    return this.authService.verifyEmail(token);
   }
 }

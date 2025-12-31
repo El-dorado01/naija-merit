@@ -158,6 +158,22 @@ exports.Prisma.PasswordResetTokenScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.OtpScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  code: 'code',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.VerificationTokenScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  token: 'token',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.TokenBlacklistScalarFieldEnum = {
   id: 'id',
   token: 'token',
@@ -303,6 +319,8 @@ exports.Prisma.ModelName = {
   Profile: 'Profile',
   AccessRequest: 'AccessRequest',
   PasswordResetToken: 'PasswordResetToken',
+  Otp: 'Otp',
+  VerificationToken: 'VerificationToken',
   TokenBlacklist: 'TokenBlacklist',
   Institution: 'Institution',
   AcademicRecord: 'AcademicRecord',
