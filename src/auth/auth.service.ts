@@ -46,7 +46,11 @@ export class AuthService {
       },
     });
 
-    const payload = { sub: user.id, email: user.email, role: user.role };
+    const payload = {
+      sub: user.id,
+      email: user.email ?? '',
+      role: user.role ?? 'student',
+    };
 
     // Send Verification Link
     if (user.email) {
@@ -55,7 +59,7 @@ export class AuthService {
 
     return {
       message: 'Registration successful. Verification link sent to email.',
-      access_token: this.jwtService.sign(payload, { expiresIn: '15m' }),
+      access_token: this.jwtService.sign(payload, { expiresIn: '15m' } as any),
       user: {
         id: user.id,
         email: user.email,
@@ -78,9 +82,13 @@ export class AuthService {
       throw new UnauthorizedException('Password required');
     }
 
-    const payload = { sub: user.id, email: user.email, role: user.role };
+    const payload = {
+      sub: user.id,
+      email: user.email ?? '',
+      role: user.role ?? 'student',
+    };
     return {
-      access_token: this.jwtService.sign(payload, { expiresIn: '30d' }),
+      access_token: this.jwtService.sign(payload, { expiresIn: '30d' } as any),
       user: {
         id: user.id,
         email: user.email,
