@@ -315,10 +315,14 @@ export class AuthService {
     await this.prisma.otp.deleteMany({ where: { email } });
 
     // Issue new long-lived token
-    const payload = { sub: user.id, email: user.email, role: user.role };
+    const payload = {
+      sub: user.id,
+      email: user.email ?? '',
+      role: user.role ?? 'student',
+    };
     return {
       message: 'Email verified successfully',
-      access_token: this.jwtService.sign(payload, { expiresIn: '30d' }),
+      access_token: this.jwtService.sign(payload, { expiresIn: '30d' } as any),
       user: {
         id: user.id,
         email: user.email,
@@ -374,10 +378,14 @@ export class AuthService {
     await this.prisma.verificationToken.delete({ where: { token } });
 
     // Issue new long-lived token
-    const payload = { sub: user.id, email: user.email, role: user.role };
+    const payload = {
+      sub: user.id,
+      email: user.email ?? '',
+      role: user.role ?? 'student',
+    };
     return {
       message: 'Email verified successfully',
-      access_token: this.jwtService.sign(payload, { expiresIn: '30d' }),
+      access_token: this.jwtService.sign(payload, { expiresIn: '30d' } as any),
       user: {
         id: user.id,
         email: user.email,
