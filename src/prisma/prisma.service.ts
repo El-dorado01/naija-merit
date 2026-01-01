@@ -17,10 +17,18 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   }
 
   async onModuleInit() {
-    // Optional: Test connection on startup
+    // In serverless environments, connect lazily to avoid cold start issues
+    // Connection will be established on first query if not already connected
+    if (process.env.VERCEL) {
+      // In Vercel, we'll connect on-demand to reduce cold start time
+      console.log('⚠️  Serverless mode: Prisma will connect on first query');
+      return;
+    }
+    
+    // In non-serverless environments, connect immediately
     try {
       await this.$connect();
-      console.log('✅ Prisma connected to Supabase successfully!');
+      console.log('✅ Prisma connected to database successfully!');
     } catch (error) {
       console.error('❌ Prisma connection failed:', error);
       throw error; // let NestJS know the app failed to start

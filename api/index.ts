@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import 'dotenv/config';
 import { bootstrap } from '../src/main';
 
-let cachedHandler: any;
+let cachedApp: any;
 
 export default async (req: any, res: any) => {
   // Global CORS handling
@@ -23,19 +23,43 @@ export default async (req: any, res: any) => {
   }
 
   try {
-    if (!cachedHandler) {
+    // Cache the NestJS app instance across invocations
+    if (!cachedApp) {
       console.log('Bootstrapping NestJS for Vercel...');
-      const app = await bootstrap();
-      await app.init();
-      cachedHandler = app.getHttpAdapter().getInstance();
+      cachedApp = await bootstrap();
+      await cachedApp.init();
       console.log('NestJS bootstrapped successfully');
     }
-    return cachedHandler(req, res);
+
+    // Get the Express instance from NestJS
+    const expressApp = cachedApp.getHttpAdapter().getInstance();
+    
+    // Wrap Express handler in a Promise to properly handle async operations
+    return new Promise((resolve, reject) => {
+      expressApp(req, res, (err: any) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(undefined);
+        }
+      });
+    });
   } catch (error) {
     console.error('Failed to handle request:', error);
-    res.status(500).json({
-      error: 'Internal Server Error',
-      message: error instanceof Error ? error.message : String(error),
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorStack = error instanceof Error ? error.stack : undefined;
+    
+    console.error('Error details:', {
+      message: errorMessage,
+      stack: errorStack,
     });
+    
+    if (!res.headersSent) {
+      res.status(500).json({
+        error: 'Internal Server Error',
+        message: errorMessage,
+        ...(process.env.NODE_ENV === 'development' && { stack: errorStack }),
+      });
+    }
   }
 };
