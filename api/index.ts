@@ -4,30 +4,44 @@ import 'dotenv/config';
 // Dynamic import to handle module resolution in both dev and production
 // Vercel compiles TypeScript, so we need to handle both source and compiled paths
 async function loadBootstrap() {
-  // In production/Vercel, the code is compiled to dist/src/main.js
-  // In development, we can import from src/main.ts directly
-  try {
-    // Try compiled version first (production)
-    const compiled = require('../dist/src/main');
-    if (compiled && compiled.bootstrap) {
-      return compiled.bootstrap;
+  // In Vercel serverless environment, files are flattened.
+  // We need to check various locations where the compiled main file might be.
+  const potentialPaths = [
+    '../dist/main', // Standard NestJS build output
+    '../src/main', // Source location (for dev)
+    './dist/main', // Relative to api folder
+    '../../dist/main', // Up two levels
+    '../dist/src/main', // Sometimes nested in src
+  ];
+
+  for (const path of potentialPaths) {
+    try {
+      const mod = require(path);
+      if (mod && mod.bootstrap) {
+        console.log(`Successfully loaded bootstrap from: ${path}`);
+        return mod.bootstrap;
+      }
+    } catch (e) {
+      // Continue to next path
     }
-  } catch (e) {
-    // Compiled version not available, try source
   }
 
-  try {
-    // Fallback to source (development or if build failed)
-    const source = require('../src/main');
-    if (source && source.bootstrap) {
-      return source.bootstrap;
+  // Last ditch attempt: dynamic import for ESM modules (unlikely for default NestJS but possible)
+  for (const path of potentialPaths) {
+    try {
+      const mod = await import(path);
+      if (mod && mod.bootstrap) {
+        console.log(`Successfully loaded bootstrap (ESM) from: ${path}`);
+        return mod.bootstrap;
+      }
+    } catch (e) {
+      // Continue
     }
-  } catch (e) {
-    console.error('Failed to load bootstrap from both dist and src:', e);
   }
 
+  console.error('Failed to load bootstrap. Checked paths:', potentialPaths);
   throw new Error(
-    'Cannot load bootstrap function. Ensure the project is built.',
+    'Cannot load bootstrap function. Ensure the project is built and dist/main.js exists.',
   );
 }
 
