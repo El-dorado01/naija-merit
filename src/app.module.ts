@@ -21,10 +21,16 @@ import { RecruitmentModule } from './recruitment/recruitment.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
-      serveRoot: '/uploads',
-    }),
+    // Only serve static files in non-serverless environments
+    // In serverless (Vercel), files are stored as data URLs or in cloud storage
+    ...(process.env.VERCEL
+      ? []
+      : [
+          ServeStaticModule.forRoot({
+            rootPath: join(__dirname, '..', 'uploads'),
+            serveRoot: '/uploads',
+          }),
+        ]),
     PrismaModule,
     StudentModule,
     InstitutionModule,

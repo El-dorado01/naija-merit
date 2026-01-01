@@ -1,6 +1,35 @@
 import 'reflect-metadata';
 import 'dotenv/config';
-import { bootstrap } from '../src/main';
+
+// Dynamic import to handle module resolution in both dev and production
+// Vercel compiles TypeScript, so we need to handle both source and compiled paths
+async function loadBootstrap() {
+  // In production/Vercel, the code is compiled to dist/src/main.js
+  // In development, we can import from src/main.ts directly
+  try {
+    // Try compiled version first (production)
+    const compiled = require('../dist/src/main');
+    if (compiled && compiled.bootstrap) {
+      return compiled.bootstrap;
+    }
+  } catch (e) {
+    // Compiled version not available, try source
+  }
+
+  try {
+    // Fallback to source (development or if build failed)
+    const source = require('../src/main');
+    if (source && source.bootstrap) {
+      return source.bootstrap;
+    }
+  } catch (e) {
+    console.error('Failed to load bootstrap from both dist and src:', e);
+  }
+
+  throw new Error(
+    'Cannot load bootstrap function. Ensure the project is built.',
+  );
+}
 
 let cachedApp: any;
 
@@ -26,7 +55,20 @@ export default async (req: any, res: any) => {
     // Cache the NestJS app instance across invocations
     if (!cachedApp) {
       console.log('Bootstrapping NestJS for Vercel...');
-      cachedApp = await bootstrap();
+      console.log('Environment check:', {
+        NODE_ENV: process.env.NODE_ENV,
+        VERCEL: process.env.VERCEL,
+        DATABASE_URL: process.env.DATABASE_URL ? 'SET' : 'MISSING',
+        JWT_SECRET: process.env.JWT_SECRET ? 'SET' : 'MISSING',
+      });
+
+      console.log('Loading bootstrap function...');
+      const bootstrapFn = await loadBootstrap();
+
+      console.log('Creating NestJS app...');
+      cachedApp = await bootstrapFn();
+
+      console.log('App created, initializing...');
       await cachedApp.init();
       console.log('NestJS bootstrapped successfully');
     }

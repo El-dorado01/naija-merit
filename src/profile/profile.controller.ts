@@ -1,19 +1,23 @@
 import { Controller, Get, Post, Body, Param, Put, Patch, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus, UseGuards, Request } from '@nestjs/common';
 import { ProfileService } from './profile.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
+import { diskStorage, memoryStorage } from 'multer';
 import { extname } from 'path';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 // Helper for file storage setup
+// Use memory storage in serverless (Vercel), disk storage in local development
 const uploadOptions = {
-  storage: diskStorage({
-    destination: './uploads/avatars',
-    filename: (req, file, cb) => {
-      const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
-      cb(null, `${randomName}${extname(file.originalname)}`);
-    },
-  }),
+  storage: process.env.VERCEL
+    ? memoryStorage() // Serverless: files in memory
+    : diskStorage({
+        // Local development: save to disk
+        destination: './uploads/avatars',
+        filename: (req, file, cb) => {
+          const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
+          cb(null, `${randomName}${extname(file.originalname)}`);
+        },
+      }),
 };
 
 @Controller('profile')
