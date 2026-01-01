@@ -1,7 +1,7 @@
 import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class InstitutionService {
@@ -9,8 +9,8 @@ export class InstitutionService {
 
   async create(data: { name: string; type: string; address?: string; state?: string }) {
     // Generate Credentials
-    const loginId = `admin_${uuidv4().split('-')[0]}@${data.name.replace(/\s+/g, '').toLowerCase()}.com`;
-    // const password = uuidv4().split('-')[0] + '123!';
+    const loginId = `admin_${randomUUID().split('-')[0]}@${data.name.replace(/\s+/g, '').toLowerCase()}.com`;
+    // const password = randomUUID().split('-')[0] + '123!';
     const password = 'Password@123'; // Hardcoded for simplicity/demo as requested "toggled and viewed". 
     // In prod, use random.
     

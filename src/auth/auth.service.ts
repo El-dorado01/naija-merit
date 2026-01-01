@@ -9,7 +9,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { MailService } from '../mail/mail.service';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class AuthService {
@@ -336,7 +336,7 @@ export class AuthService {
     const user = await this.prisma.profile.findUnique({ where: { email } });
     if (!user) throw new NotFoundException('User not found');
 
-    const token = uuidv4();
+    const token = randomUUID();
     const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
     await this.prisma.verificationToken.create({
