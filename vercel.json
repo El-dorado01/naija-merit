@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "pnpm run vercel-build",
   "rewrites": [
     {
       "source": "/api/(.*)",
