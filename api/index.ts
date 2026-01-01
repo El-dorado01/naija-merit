@@ -1,49 +1,6 @@
 import 'reflect-metadata';
 import 'dotenv/config';
-
-// Dynamic import to handle module resolution in both dev and production
-// Vercel compiles TypeScript, so we need to handle both source and compiled paths
-async function loadBootstrap() {
-  // In Vercel serverless environment, files are flattened.
-  // We need to check various locations where the compiled main file might be.
-  const potentialPaths = [
-    '../dist/main', // Standard NestJS build output
-    '../src/main', // Source location (for dev)
-    './dist/main', // Relative to api folder
-    '../../dist/main', // Up two levels
-    '../dist/src/main', // Sometimes nested in src
-  ];
-
-  for (const path of potentialPaths) {
-    try {
-      const mod = require(path);
-      if (mod && mod.bootstrap) {
-        console.log(`Successfully loaded bootstrap from: ${path}`);
-        return mod.bootstrap;
-      }
-    } catch (e) {
-      // Continue to next path
-    }
-  }
-
-  // Last ditch attempt: dynamic import for ESM modules (unlikely for default NestJS but possible)
-  for (const path of potentialPaths) {
-    try {
-      const mod = await import(path);
-      if (mod && mod.bootstrap) {
-        console.log(`Successfully loaded bootstrap (ESM) from: ${path}`);
-        return mod.bootstrap;
-      }
-    } catch (e) {
-      // Continue
-    }
-  }
-
-  console.error('Failed to load bootstrap. Checked paths:', potentialPaths);
-  throw new Error(
-    'Cannot load bootstrap function. Ensure the project is built and dist/main.js exists.',
-  );
-}
+import { bootstrap } from '../src/main';
 
 let cachedApp: any;
 
@@ -77,10 +34,9 @@ export default async (req: any, res: any) => {
       });
 
       console.log('Loading bootstrap function...');
-      const bootstrapFn = await loadBootstrap();
 
       console.log('Creating NestJS app...');
-      cachedApp = await bootstrapFn();
+      cachedApp = await bootstrap();
 
       console.log('App created, initializing...');
       await cachedApp.init();
