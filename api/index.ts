@@ -33,7 +33,7 @@ export default async (req: any, res: any) => {
 
     // Get the Express instance from NestJS
     const expressApp = cachedApp.getHttpAdapter().getInstance();
-    
+
     // Wrap Express handler in a Promise to properly handle async operations
     return new Promise((resolve, reject) => {
       expressApp(req, res, (err: any) => {
@@ -48,12 +48,12 @@ export default async (req: any, res: any) => {
     console.error('Failed to handle request:', error);
     const errorMessage = error instanceof Error ? error.message : String(error);
     const errorStack = error instanceof Error ? error.stack : undefined;
-    
+
     console.error('Error details:', {
       message: errorMessage,
       stack: errorStack,
     });
-    
+
     if (!res.headersSent) {
       res.status(500).json({
         error: 'Internal Server Error',
