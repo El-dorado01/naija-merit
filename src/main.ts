@@ -1,35 +1,23 @@
-import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { INestApplication } from '@nestjs/common';
 
-let cachedServer: any;
-
-async function bootstrap() {
-  if (!cachedServer) {
-    const app = await NestFactory.create(AppModule);
-    app.setGlobalPrefix('api/v1');
-    app.enableCors();
-    await app.init();
-    cachedServer = app.getHttpAdapter().getInstance();
-  }
-  return cachedServer;
+export async function bootstrap(): Promise<INestApplication> {
+  const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api/v1');
+  app.enableCors();
+  return app;
 }
 
-// Export a handler for Vercel
-export default async (req: any, res: any) => {
-  const server = await bootstrap();
-  return server(req, res);
-};
-
 // Local development support
-if (process.env.NODE_ENV !== 'production') {
-  const startLocal = async () => {
-    const app = await NestFactory.create(AppModule);
-    app.setGlobalPrefix('api/v1');
-    app.enableCors();
-    const port = process.env.PORT ?? 3000;
+if (require.main === module && !process.env.VERCEL) {
+  async function startLocal() {
+    const app = await bootstrap();
+    const port = process.env.PORT ?? 3030;
     await app.listen(port);
     console.log(`Server running on http://localhost:${port}/api/v1`);
-  };
-  startLocal();
+  }
+  startLocal().catch((err) => {
+    console.error('Error starting server:', err);
+  });
 }
