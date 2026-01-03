@@ -21,7 +21,6 @@ export class InstitutionService {
     const loginId = `admin_${randomUUID().split('-')[0]}@${data.name.replace(/\s+/g, '').toLowerCase()}.com`;
     // const password = randomUUID().split('-')[0] + '123!';
     const password = 'Password@123'; // Hardcoded for simplicity/demo as requested "toggled and viewed".
-    // In prod, use random.
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -48,9 +47,15 @@ export class InstitutionService {
         email: loginId,
         password: hashedPassword,
         role: 'school_admin',
-        institutionId: institution.id,
         isVerified: true, // Auto-verified
         isAdminVerified: true, // Institutions are pre-approved
+        memberships: {
+          create: {
+            institutionId: institution.id,
+            role: 'school_admin',
+            isVerified: true,
+          },
+        },
       },
     });
 
@@ -64,7 +69,84 @@ export class InstitutionService {
   }
 
   async findAll() {
-    return this.prisma.institution.findMany({ include: { members: true } });
+    return this.prisma.institution.findMany();
+  }
+
+  async findOne(id: string) {
+    const institution = await this.prisma.institution.findUnique({
+      where: { id },
+    });
+
+    if (!institution) throw new NotFoundException('Institution not found');
+    return institution;
+  }
+
+  async getStudents(institutionId: string, page: number = 1, search?: string) {
+    const limit = 10;
+    const skip = (page - 1) * limit;
+
+    const [data, total] = await Promise.all([
+      this.prisma.institutionMember.findMany({
+        where: {
+          institutionId,
+          role: 'student',
+          ...(search
+            ? {
+                profile: {
+                  OR: [
+                    { fullName: { contains: search, mode: 'insensitive' } },
+                    { email: { contains: search, mode: 'insensitive' } },
+                    { nin: { contains: search } },
+                  ],
+                },
+              }
+            : {}),
+        },
+        skip,
+        take: limit,
+        orderBy: { createdAt: 'desc' },
+        include: {
+          profile: {
+            select: {
+              id: true,
+              fullName: true,
+              email: true,
+              isVerified: true,
+              stateOfOrigin: true,
+              avatar: true,
+              nin: true,
+              createdAt: true,
+            },
+          },
+        },
+      }),
+      this.prisma.institutionMember.count({
+        where: {
+          institutionId,
+          role: 'student',
+          ...(search
+            ? {
+                profile: {
+                  OR: [
+                    { fullName: { contains: search, mode: 'insensitive' } },
+                    { email: { contains: search, mode: 'insensitive' } },
+                    { nin: { contains: search } },
+                  ],
+                },
+              }
+            : {}),
+        },
+      }),
+    ]);
+
+    return {
+      data: data.map((m) => m.profile),
+      meta: {
+        total,
+        page,
+        lastPage: Math.ceil(total / limit),
+      },
+    };
   }
 
   async registerStudents(institutionId: string, students: any[]) {
@@ -76,7 +158,7 @@ export class InstitutionService {
     const results: any[] = [];
 
     for (const s of students) {
-      let student: any = null; // Fix type inference
+      let student: any = null;
 
       // 1. Try finding by NIN
       if (s.nin) {
@@ -92,39 +174,57 @@ export class InstitutionService {
         });
       }
 
+      // 3. Create or Update Profile
       if (student) {
-        // Exists: Enroll them in this institution (Link them)
-        await this.prisma.profile.update({
-          where: { id: student.id },
-          data: { institutionId },
-        });
-        results.push({ ...student, status: 'enrolled' });
-      } else {
-        // Does not exist: Create "Skeletal" Profile for future claiming
-        // No password, just NIN + Name + Institution
-        try {
-          const newStudent = await this.prisma.profile.create({
-            data: {
-              nin: s.nin,
-              email: s.email || undefined, // Email optional
-              fullName: s.fullName,
-              role: 'student',
+        // If profile exists, link it to institution
+        await this.prisma.institutionMember.upsert({
+          where: {
+            institutionId_profileId: {
               institutionId,
-              password: null, // No password, must act as "unclaimed"
-              isVerified: true,
+              profileId: student.id,
             },
-          });
-          results.push({ ...newStudent, status: 'created' });
-        } catch (e) {
-          console.error(e);
-        }
+          },
+          update: {},
+          create: {
+            institutionId,
+            profileId: student.id,
+            role: 'student',
+            isVerified: true,
+          },
+        });
+
+        results.push({ email: s.email, status: 'Linked', id: student.id });
+      } else {
+        // Create new profile and link
+        const newPassword = await bcrypt.hash('Student@123', 10);
+
+        const newProfile = await this.prisma.profile.create({
+          data: {
+            email: s.email,
+            fullName: s.fullName || s.name,
+            nin: s.nin,
+            role: 'student',
+            password: newPassword,
+            isVerified: true,
+            memberships: {
+              create: {
+                institutionId,
+                role: 'student',
+                isVerified: true,
+              },
+            },
+          },
+        });
+
+        results.push({ email: s.email, status: 'Created', id: newProfile.id });
       }
     }
-    return { count: results.length, students: results };
+
+    return { processed: results.length, details: results };
   }
 
   async getAnalytics(institutionId: string) {
-    const studentCount = await this.prisma.profile.count({
+    const studentCount = await this.prisma.institutionMember.count({
       where: { institutionId, role: 'student' },
     });
     const recordCount = await this.prisma.academicRecord.count({
@@ -158,15 +258,25 @@ export class InstitutionService {
     });
     if (!institution) throw new NotFoundException('Institution not found');
 
-    // Also delete the school_admin account(s) associated with this institution?
-    // Usually, we should or at least deactivate them.
-    // For now, let's just delete the institution. Cascade will handle Profile if set?
-    // Looking at schema, Profile.institution is Optional and doesn't have onDelete: Cascade.
-    // Let's delete the admin profile first if it follows the "Admin" naming convention or role.
-    await this.prisma.profile.deleteMany({
-      where: { institutionId: id, role: 'school_admin' },
+    // Manually delete members first
+    await this.prisma.institutionMember.deleteMany({
+      where: { institutionId: id },
     });
 
     return this.prisma.institution.delete({ where: { id } });
+  }
+
+  async updateSettings(id: string, data: { cgpaScale?: number }) {
+    const institution = await this.prisma.institution.findUnique({
+      where: { id },
+    });
+    if (!institution) throw new NotFoundException('Institution not found');
+
+    return this.prisma.institution.update({
+      where: { id },
+      data: {
+        cgpaScale: data.cgpaScale,
+      },
+    });
   }
 }

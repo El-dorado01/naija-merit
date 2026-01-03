@@ -9,6 +9,7 @@ import {
   ForbiddenException,
   Patch,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { InstitutionService } from './institution.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -38,6 +39,27 @@ export class InstitutionController {
   @Get()
   findAll() {
     return this.institutionService.findAll();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return this.institutionService.findOne(id);
+  }
+
+  @Get(':id/students')
+  @UseGuards(JwtAuthGuard)
+  async getStudents(
+    @Request() req,
+    @Param('id') id: string,
+    @Query('page') page?: number,
+    @Query('search') search?: string,
+  ) {
+    // Check access: only admin or the institution itself
+    if (req.user.role !== 'admin' && req.user.institutionId !== id) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.institutionService.getStudents(id, page || 1, search);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -79,5 +101,19 @@ export class InstitutionController {
   @RequirePermission('manage_institutions')
   delete(@Param('id') id: string) {
     return this.institutionService.delete(id);
+  }
+
+  @Patch(':id/settings')
+  @UseGuards(JwtAuthGuard)
+  async updateSettings(
+    @Request() req,
+    @Param('id') id: string,
+    @Body() dto: { cgpaScale?: number },
+  ) {
+    // Only school_admin of the institution or admin can update settings
+    if (req.user.role !== 'admin' && req.user.institutionId !== id) {
+      throw new ForbiddenException('Access denied');
+    }
+    return this.institutionService.updateSettings(id, dto);
   }
 }

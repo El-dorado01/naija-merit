@@ -29,8 +29,8 @@ model Profile {
   isVerified       Boolean   @default(false)
   isAdminVerified  Boolean   @default(false) // Admin approval flag for specialized roles
   isOpenToRecruiters Boolean @default(false) // Global consent flag
-  institutionId    String?
-  institution      Institution? @relation(fields: [institutionId], references: [id])
+  // Removed direct institutionId in favor of memberships
+  memberships      InstitutionMember[]
   
   // Admin-specific fields
   permissions      Json?         // Array of permission strings for admin roles
@@ -123,12 +123,29 @@ model Institution {
   cgpaScale   Float?   @default(5.0) // Max CGPA scale for tertiary institutions
   
   academicRecords AcademicRecord[]
-  members         Profile[]
+  members         InstitutionMember[]
   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   @@map("institutions")
+}
+
+model InstitutionMember {
+  id            String      @id @default(uuid())
+  institutionId String
+  profileId     String      @db.Uuid
+  role          String      @default("student") // 'student', 'school_admin'
+  isVerified    Boolean     @default(false)
+  
+  institution   Institution @relation(fields: [institutionId], references: [id])
+  profile       Profile     @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  @@unique([institutionId, profileId])
+  @@map("institution_members")
 }
 
 model AcademicRecord {

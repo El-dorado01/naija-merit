@@ -240,7 +240,7 @@ export class AdminService {
         fullName: true,
         role: true,
         isVerified: true,
-        institutionId: true,
+        memberships: { take: 1, select: { institutionId: true } },
         createdAt: true,
       },
       orderBy: { createdAt: 'desc' },

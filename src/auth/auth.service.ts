@@ -29,6 +29,7 @@ export class AuthService {
     // Check if user exists
     const existing = await this.prisma.profile.findUnique({
       where: { email: data.email },
+      include: { memberships: true },
     });
     if (existing) throw new ConflictException('Email already registered');
 
@@ -44,6 +45,7 @@ export class AuthService {
         fullName: data.fullName,
         isVerified: false,
       },
+      include: { memberships: true },
     });
 
     const payload = {
@@ -72,6 +74,7 @@ export class AuthService {
   async login(data: { email: string; password: string }) {
     const user = await this.prisma.profile.findUnique({
       where: { email: data.email },
+      include: { memberships: true },
     });
     if (!user) throw new UnauthorizedException('Invalid credentials');
 
@@ -108,6 +111,7 @@ export class AuthService {
     // 2. Check if NIN is already used
     const existingProfile = await this.prisma.profile.findUnique({
       where: { nin },
+      include: { memberships: true },
     });
 
     // Use transaction to ensure atomicity
@@ -148,14 +152,25 @@ export class AuthService {
 
         // 4. Update Current User School if missing
         // If user hasn't selected a school yet, use the one from the skeletal profile
-        if (existingProfile.institutionId) {
-          const currentUser = await tx.profile.findUnique({
-            where: { id: userId },
-          });
-          if (!currentUser?.institutionId) {
-            await tx.profile.update({
-              where: { id: userId },
-              data: { institutionId: existingProfile.institutionId },
+        // 5. Update Current User School (Memberships) if missing
+        // If user hasn't selected a school yet, use the one(s) from the skeletal profile
+        if (existingProfile.memberships?.length > 0) {
+          for (const membership of existingProfile.memberships) {
+            // Create membership for new user if not exists
+            await tx.institutionMember.upsert({
+              where: {
+                institutionId_profileId: {
+                  institutionId: membership.institutionId,
+                  profileId: userId,
+                },
+              },
+              update: {},
+              create: {
+                institutionId: membership.institutionId,
+                profileId: userId,
+                role: membership.role,
+                isVerified: membership.isVerified,
+              },
             });
           }
         }

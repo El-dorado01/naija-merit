@@ -19,6 +19,33 @@ export class UserController {
     private accessService: AccessRequestService,
   ) {}
 
+  @Get('me')
+  async getCurrentUser(@Request() req) {
+    const user = await this.prisma.profile.findUnique({
+      where: { id: req.user.userId },
+      select: {
+        id: true,
+        fullName: true,
+        email: true,
+        role: true,
+        memberships: {
+          take: 1,
+          select: { institutionId: true },
+        },
+        // institutionId: true, // Removed
+        avatar: true,
+        isVerified: true,
+      },
+    });
+    if (!user) throw new NotFoundException('User not found');
+
+    // Flatten institutionId for frontend compatibility
+    return {
+      ...user,
+      institutionId: user.memberships?.[0]?.institutionId || null,
+    };
+  }
+
   @Get()
   async findAll(
     @Query('role') role?: string,
