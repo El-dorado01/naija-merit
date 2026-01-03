@@ -1,4 +1,12 @@
-import { Controller, Get, Param, Query, NotFoundException, UseGuards, Request } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  NotFoundException,
+  UseGuards,
+  Request,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AccessRequestService } from '../access-request/access-request.service';
@@ -8,15 +16,18 @@ import { AccessRequestService } from '../access-request/access-request.service';
 export class UserController {
   constructor(
     private prisma: PrismaService,
-    private accessService: AccessRequestService
+    private accessService: AccessRequestService,
   ) {}
 
   @Get()
-  async findAll(@Query('role') role?: string, @Query('verified') verified?: string) {
+  async findAll(
+    @Query('role') role?: string,
+    @Query('verified') verified?: string,
+  ) {
     const where: any = {};
     if (role) where.role = role;
     if (verified === 'true') where.isVerified = true;
-    
+
     return this.prisma.profile.findMany({
       where,
       select: {
@@ -26,7 +37,7 @@ export class UserController {
         avatar: true,
         isVerified: true,
         stateOfOrigin: true,
-      }
+      },
     });
   }
 
@@ -34,8 +45,10 @@ export class UserController {
   async findOne(@Request() req, @Param('id') id: string) {
     const currentUser = req.user;
     const isSelf = currentUser.userId === id;
-    const isAdmin = ['admin', 'school_admin'].includes(currentUser.role);
-    
+    const isAdmin = ['admin', 'super_admin', 'school_admin'].includes(
+      currentUser.role,
+    );
+
     let hasAccess = isSelf || isAdmin;
 
     if (!hasAccess && currentUser.role === 'recruiter') {
@@ -48,9 +61,9 @@ export class UserController {
         academicRecords: hasAccess, // Only include if access granted
         extracurriculars: hasAccess,
         eventParticipations: hasAccess,
-      }
+      },
     });
-    
+
     if (!user) throw new NotFoundException('User not found');
 
     if (!hasAccess) {
@@ -62,7 +75,7 @@ export class UserController {
         avatar: user.avatar,
         isVerified: user.isVerified,
         stateOfOrigin: user.stateOfOrigin,
-        message: "Full profile hidden. Request access to view details."
+        message: 'Full profile hidden. Request access to view details.',
       };
     }
 

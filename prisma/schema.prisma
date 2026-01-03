@@ -27,6 +27,7 @@ model Profile {
   password         String?   // Hashed password
   avatar           String?   // URL to profile picture
   isVerified       Boolean   @default(false)
+  isAdminVerified  Boolean   @default(false) // Admin approval flag for specialized roles
   isOpenToRecruiters Boolean @default(false) // Global consent flag
   institutionId    String?
   institution      Institution? @relation(fields: [institutionId], references: [id])

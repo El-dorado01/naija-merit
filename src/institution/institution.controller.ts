@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Param, UseGuards, Request, ForbiddenException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  UseGuards,
+  Request,
+  ForbiddenException,
+  Patch,
+  Delete,
+} from '@nestjs/common';
 import { InstitutionService } from './institution.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { PermissionGuard } from '../guards/permission.guard';
@@ -11,7 +22,15 @@ export class InstitutionController {
   @Post()
   @UseGuards(JwtAuthGuard, PermissionGuard)
   @RequirePermission('manage_institutions')
-  create(@Body() dto: { name: string; type: string; address?: string; state?: string }) {
+  create(
+    @Body()
+    dto: {
+      name: string;
+      type: string;
+      address?: string;
+      state?: string;
+    },
+  ) {
     // Ideally protected by Admin Guard
     return this.institutionService.create(dto);
   }
@@ -23,20 +42,42 @@ export class InstitutionController {
 
   @UseGuards(JwtAuthGuard)
   @Post(':id/students')
-  async registerStudents(@Request() req, @Param('id') id: string, @Body() students: any[]) {
-     if (req.user.role !== 'school_admin' && req.user.role !== 'admin') {
-        throw new ForbiddenException('Only school admins can register students');
-     }
-     // Optionally check if req.user.institutionId === id
-     return this.institutionService.registerStudents(id, students);
+  async registerStudents(
+    @Request() req,
+    @Param('id') id: string,
+    @Body() students: any[],
+  ) {
+    if (req.user.role !== 'school_admin' && req.user.role !== 'admin') {
+      throw new ForbiddenException('Only school admins can register students');
+    }
+    // Optionally check if req.user.institutionId === id
+    return this.institutionService.registerStudents(id, students);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get(':id/analytics')
   async getAnalytics(@Request() req, @Param('id') id: string) {
-     if (req.user.role !== 'school_admin' && req.user.role !== 'admin') {
-        throw new ForbiddenException('Access denied');
-     }
-     return this.institutionService.getAnalytics(id);
+    if (req.user.role !== 'school_admin' && req.user.role !== 'admin') {
+      throw new ForbiddenException('Access denied');
+    }
+    return this.institutionService.getAnalytics(id);
+  }
+
+  @Patch(':id')
+  @UseGuards(JwtAuthGuard, PermissionGuard)
+  @RequirePermission('manage_institutions')
+  update(
+    @Param('id') id: string,
+    @Body()
+    dto: { name?: string; type?: string; address?: string; state?: string },
+  ) {
+    return this.institutionService.update(id, dto);
+  }
+
+  @Delete(':id')
+  @UseGuards(JwtAuthGuard, PermissionGuard)
+  @RequirePermission('manage_institutions')
+  delete(@Param('id') id: string) {
+    return this.institutionService.delete(id);
   }
 }
