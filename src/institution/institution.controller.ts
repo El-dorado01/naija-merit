@@ -37,8 +37,8 @@ export class InstitutionController {
   }
 
   @Get()
-  findAll() {
-    return this.institutionService.findAll();
+  findAll(@Query('type') type?: string) {
+    return this.institutionService.findAll(type);
   }
 
   @Get(':id')

@@ -124,11 +124,24 @@ model Institution {
   
   academicRecords AcademicRecord[]
   members         InstitutionMember[]
-  
+  programmes      Programme[]
+
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   @@map("institutions")
+}
+
+model Programme {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  faculty     String?
+  institutions Institution[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("programmes")
 }
 
 model InstitutionMember {

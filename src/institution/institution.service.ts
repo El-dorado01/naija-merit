@@ -68,8 +68,16 @@ export class InstitutionService {
     };
   }
 
-  async findAll() {
-    return this.prisma.institution.findMany();
+  async findAll(type?: string) {
+    if (type) {
+      return this.prisma.institution.findMany({
+        where: { type: { contains: type, mode: 'insensitive' } },
+        orderBy: { name: 'asc' },
+      });
+    }
+    return this.prisma.institution.findMany({
+      orderBy: { name: 'asc' },
+    });
   }
 
   async findOne(id: string) {

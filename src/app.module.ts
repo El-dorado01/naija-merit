@@ -17,6 +17,7 @@ import { AccessRequestModule } from './access-request/access-request.module';
 import { EventModule } from './event/event.module';
 import { AdminModule } from './admin/admin.module';
 import { RecruitmentModule } from './recruitment/recruitment.module';
+import { ProgrammeModule } from './programme/programme.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { RecruitmentModule } from './recruitment/recruitment.module';
     EventModule,
     AdminModule,
     RecruitmentModule,
+    ProgrammeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
