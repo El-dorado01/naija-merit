@@ -1,5 +1,4 @@
 # Ignore source files - only api/ directory should be used for serverless functions
-src/
 dist/src/main.js
 dist/src/main.d.ts
 dist/src/main.js.map
